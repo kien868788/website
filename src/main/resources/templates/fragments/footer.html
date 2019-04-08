@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="footer-distributed" th:fragment="footer">
+    <footer class="container">
+
+        <div class="footer-left">
+
+            <div><a href=""><img class="logo_bot" src="anh/logochuan.png" alt=""/></a></div>
+
+            <div class="footer-links">
+                <p>Địa chỉ &nbsp;: abc xyz </p>
+
+                <p>Điện thoại&nbsp;: 123456789</p>
+
+                <p>Email &nbsp;: Info@com</p>
+            </div>
+            <div class="footer-icons">
+
+                <a href="#"><i class="fab fa-facebook-square fa-3x"></i></a>
+                &nbsp; &nbsp; &nbsp;
+                <a href="#"><i class="fab fa-twitter-square fa-3x"></i></a>
+                &nbsp; &nbsp; &nbsp;
+                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
+                &nbsp; &nbsp; &nbsp;
+                <a href="#"><i class="fab fa-google-plus-square fa-3x"></i></a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+            <div>
+                <p style="text-align: center;"> <h4>LIÊN HỆ VỚI CHÚNG TÔI</h4></p>
+            </div>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Họ Tên"/>
+                <input type="text" name="phonenumber" placeholder="Số Điện Thoại"/>
+                <input type="text" name="email" placeholder="Email"/>
+                <textarea name="message" placeholder="Tin Nhắn "></textarea>
+                <button>Send</button>
+            </form>
+        </div>
+    </footer>
+</section>
+</body>
+</html>

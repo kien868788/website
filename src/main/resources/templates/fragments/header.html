@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <title></title>
+</head>
+<body>
+<header id="header" th:fragment="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="top-phone col-12 col-md-8">
+                    <h1 th:text="${post != null ? post.title : 'Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ'}"></h1>
+                </div>
+                <div class="login-logout col-12 col-md-4" sec:authorize="isAuthenticated()">
+                    <ul>
+                        <li>
+                            <a th:href="@{/users/admin}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Quản Trị
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/logout}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="logo col-12 col-md-2">
+                <a href="index.html" title="">
+                    <img th:src="@{/anh/logo_1.png}" alt="" title="" width="auto" height="auto">
+                </a>
+            </div>
+            <div class="col-12 col-md-10 d-none d-md-block d-lg-block">
+                <img th:src="@{/anh/banner.jpg}" alt="" title="" class="img-fluid pull-right" width="auto"
+                     height="auto">
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="menu" th:fragment="nav">
+    <nav class="clearfix">
+        <div class="container d-none d-md-block d-lg-block">
+            <ul>
+                <li><a th:href='@{/}'>Trang Chủ</a></li>
+                <li><a href=''>Mua Bán Nhà Đất Đà Nẵng</a>
+                    <ul class='sub-menu'>
+                        <li><a href=''>Quận Hải Châu</a></li>
+                        <li><a href=''>Quận Cẩm Lệ</a></li>
+                        <li><a href=''>Quận Thanh Khê</a></li>
+                        <li><a href=''>Quận Liên Chiểu</a></li>
+                        <li><a href=''>Quận Ngũ Hành Sơn</a></li>
+                        <li><a href=''>Quận Sơn Trà</a></li>
+                        <li><a href=''>Huyện Hòa Vang</a></li>
+                    </ul>
+                </li>
+                <li><a href=''>Cho Thuê Bán Nhà Đất Đà Nẵng</a>
+                    <ul class='sub-menu'>
+                        <li><a href=''>Quận Hải Châu</a></li>
+                        <li><a href=''>Quận Cẩm Lệ</a></li>
+                        <li><a href=''>Quận Thanh Khê</a></li>
+                        <li><a href=''>Quận Liên Chiểu</a></li>
+                        <li><a href=''>Quận Ngũ Hành Sơn</a></li>
+                        <li><a href=''>Quận Sơn Trà</a></li>
+                        <li><a href=''>Huyện Hòa Vang</a></li>
+                    </ul>
+                </li>
+                <li><a href=''>Tin Tức Nhà Đất Đà Nẵng</a>
+                    <ul class='sub-menu'>
+                        <li>
+                            <a href=''>Thông Tin Đầu Tư Dự Án</a></li>
+                        <li><a href=''>Phong Thủy Theo Tuổi</a></li>
+                    </ul>
+                </li>
+                <li><a href=''>Dịch Vụ Khác</a>
+                    <ul class='sub-menu'>
+                        <li><a href=''>Chứng Chỉ Hành Nghề BĐS</a></li>
+                        <li><a href=''>Thiết Kế Giám Sát Nhà Ở</a></li>
+                    </ul>
+                </li>
+                <li><a href=''>Giới Thiệu</a>
+                    <ul class='sub-menu'>
+                        <li><a href=''>Về Chúng Tôi</a></li>
+                        <li><a href=''>Quy Định Chính Sách</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</nav>
+</body>
+</html>

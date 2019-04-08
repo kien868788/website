@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>nhà đất đà nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<nav th:insert="~{fragments/header :: nav}"></nav>
+<section id="category">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-8">
+                <p class="title">
+                    Các Bài Đã Viết
+                    <a th:href="@{/posts?form}">
+                        <span style="float: right; ">Tạo Bài Viết</span>
+                    </a>
+                </p>
+
+                <div class="list-item" th:if="${posts != null}" th:each="post : ${posts}">
+                    <div class="col-8 col-md-9">
+                        <h3>
+                            <a th:href="@{'/posts/' + ${post.seoObject.url}}" th:text="${post.title}">
+                            </a>
+                        </h3>
+                        <div>
+                            <a th:href="@{'/posts/' + ${post.id} + '?form'}" style="color: red"> chỉnh sửa</a>
+                            &nbsp &nbsp &nbsp &nbsp
+                            <a th:href="@{'/posts/delete?id='+${post.id}}" style="color: red"> xóa</a>
+                            <div style="display: inline; float: right;">
+                                Ngày đăng : <span th:text="${post.lastModified}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

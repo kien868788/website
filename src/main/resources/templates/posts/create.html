@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"></header>
+<nav th:replace="~{fragments/header :: nav}"></nav>
+<section id="single-project">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-8">
+                <div class="item-project">
+                    <form id="postForm">
+                        <input type="hidden" name="id">
+                        <div class="title">
+                            <label>
+                                title:
+                                <input type="text" name="title" >
+                            </label>
+                        </div>
+                        <div class="price-area">
+                            <label>
+                                Block:
+                                <input  type="text" name="block" style="width: 100px;">
+                            </label>
+                            <label>
+                                Lô
+                                <input  type="number" name="lo" style="width: 70px;">
+                            </label>
+                            <label>
+                                Diện tích:
+                                <input type="number" name="square" style="width: 70px;">
+                                m <sup>2</sup>
+                            </label>
+                            <label>
+                                Giá:
+                                <input  type="number" name="price" style="width: 70px;">
+                            </label>
+                            <div>
+                                <label>
+                                    Đường:
+                                    <input  type="text" name="street" style="width: 200px;">
+                                </label>
+                            </div>
+                            <div class="">
+                                <label>
+                                    Pháp Lý:
+                                    <input  type="text" name="phapLy" style="width: 200px;">
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    Địa điểm:
+                                    <select name="locationId" >
+                                        <option value="1">Quận Hải Châu</option>
+                                        <option value="2" >Quận Cẩm Lệ</option>
+                                        <option value="3" >Quận Thanh Khê</option>
+                                        <option value="4" >Quận Liên Chiểu</option>
+                                        <option value="5" >Quận Ngũ Hành Sơn</option>
+                                        <option value="6" >Quận Sơn Trà</option>
+                                        <option value="7" >Huyện Hòa Vang</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    Thể loại:
+                                    <select name="category">
+                                        <option value="1" >Mua Bán Nhà Đất Đà Nẵng</option>
+                                        <option value="2" >Cho Thuê Bán Nhà Đất Đà Nẵng</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="realty-des"></div>
+                        <div class="entry-content">
+                            <div class="realty-infor">
+                                <h3 class="info-des">Thông tin mô tả</h3>
+                                <div id="toolbar-container"></div>
+                                <div id="editor">
+                                    <p>Thông tin mổ tả</p>
+                                </div>
+                            </div>
+                            <div class="tags">
+                                <span rel="noindex, nofollow">Tags: </span>
+                            </div>
+                            <div class="realty-contact">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h3>Đặc điểm bất động sản</h3>
+                                        <ul>
+                                            <li>
+                                                <span class="key">Hướng</span>
+                                                <input type="text" name="direction" style="width: 160px;">
+                                            </li>
+                                            <li>
+                                                <span class="key">Tình trạng</span>
+                                                <input type="text" name="status" style="width: 160px;">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h3>Thông tin liên hệ</h3>
+                                        <ul>
+                                            <li>
+                                                <span class="key">Tên liên lạc</span>
+                                                <input type="text" name="nameContact" style="width: 160px;">
+                                            </li>
+                                            <li>
+                                                <span class="key">Điện thoại</span>
+                                                <input type="text" name="phonenumber" style="width: 160px;">
+                                            </li>
+                                            <li>
+                                                <span class="key">Zalo</span>
+                                                <input type="text" name="zalo" style="width: 160px;">
+                                            </li>
+                                            <li>
+                                                <span class="key">Skype</span>
+                                                <input type="text" name="skype" style="width: 160px;">
+                                            </li>
+                                            <li>
+                                                <span class="key">Email</span>
+                                                <input type="email" name="email" style="width: 160px;">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="realty-infor">
+                                <h3 class="info-des">Meta tags: </h3>
+                                <textarea name="metas" rows="8" style="width: 100%;"></textarea>
+                            </div>
+                        </div>
+                        <button id="postFormButton" type="button" name="button">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="line_boder"></section>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+<a class="back-to-top">
+    <i class="fas fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
+</a>
+<div id="fb-root"></div>
+<script type="text/javascript" th:src="@{/scripts/main.js}"></script>
+</body>
+</html>

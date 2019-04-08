@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<nav th:insert="~{fragments/header :: nav}"></nav>
+<style>
+    .sticky {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        border-top: 0;
+    }
+</style>
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    var navbar = document.getElementById("menu");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+
+<section class="show_info_wrapper">
+    <div class="container">
+        <div class="block-title  block-title3c">
+            <div class="table-responsive">
+                <div class="table-responsive-md">
+                    <table border="1" cellpadding="1" cellspacing="1">
+                        <tbody>
+                        <tr>
+                            <th scope="col">Vị Trí Đất</th>
+                            <th scope="col">Block</th>
+                            <th scope="col">Lô</th>
+                            <th scope="col">Diện Tích</th>
+                            <th scope="col">Đường</th>
+                            <th scope="col">Hướng</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Pháp lý</th>
+                            <th scope="col">Chi Tiết</th>
+                        </tr>
+                        <div th:remove="tag" th:each="datDuAn : ${datDuAns}" th:if="${datDuAns != null}">
+                            <tr class="hover-yellow">
+                                <td th:text="${datDuAn.location.name}">Quận Hải Ch&acirc;u</td>
+                                <td>-</td>
+                                <td th:text="${datDuAn.block}">26</td>
+                                <td th:text="${datDuAn.lo + 'm'}"></td>
+                                <td><span th:text="${datDuAn.square + 'm'}"></span><sup>2</sup></td>
+                                <td th:text="${datDuAn.tag.direction}">Đ&ocirc;ng</td>
+                                <td th:text="${datDuAn.price + ' tỷ'}">5 Tỷ</td>
+                                <td th:text="${datDuAn.phapLy}">Sổ đỏ</td>
+                                <td><a th:href="@{'/posts/' + ${datDuAn.seoObject.url}}">Bấm xem</a></td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<section id="seach">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-8">
+                <h3 class="title default"><span>Nhu cầu của bạn</span></h3>
+                <form action="" method="GET">
+                    <div class="form-row">
+                        <div class="col">
+                            <select class="form-control form-control-sm">
+                                <option value="">- Chọn kiểu -</option>
+                                <option value="1">Mua bán nhà đất</option>
+                                <option value="2">Cho thuê nhà đất</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control form-control-sm" name="amount">
+                                <option value="" selected="selected">- Chọn mức giá -</option>
+                                <option value="thoa-thuan">Thỏa thuận</option>
+                                <option value="0-500">&lt; 500 triệu</option>
+                                <option value="500-1000">500 Triệu -1 tỷ</option>
+                                <option value="1000-3000">1 tỷ - 3 tỷ</option>
+                                <option value="3000-5000">3 tỷ - 5 tỷ</option>
+                                <option value=">5000">&gt; 5 tỷ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <select class="form-control form-control-sm" name="acreage">
+                                <option value="" selected="selected">- Diện tích -</option>
+                                <option value="0">Tất cả</option>
+                                <option value="10-30">10-30 m2</option>
+                                <option value="30-50">30-50 m2</option>
+                                <option value="51-80">50-80 m2</option>
+                                <option value="81-100">80-100 m2</option>
+                                <option value="100-150">100-150 m2</option>
+                                <option value="150-200">150-200 m2</option>
+                                <option value="201-250">200-250 m2</option>
+                                <option value="251-300">250-300 m2</option>
+                                <option value="301-500">300-500 m2</option>
+                                <option value="501">Trên 500 m2</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control form-control-sm" name="districts_id">
+                                <option value="">-Chọn Quận/Huyện-</option>
+                                <option value="2">Quận Hải Châu</option>
+                                <option value="8">Quận Thanh Khê</option>
+                                <option value="7">Quận Sơn Trà</option>
+                                <option value="6">Quận Ngũ Hành Sơn</option>
+                                <option value="5">Quận Liên Chiểu</option>
+                                <option value="3">Huyện Hòa Vang</option>
+                                <option value="1">Quận Cẩm Lệ</option>
+                                <option value="4">Huyện Hoàng Sa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn bg-btn btn-sm">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="support col-12 col-sm-12 col-md-4">
+                <h3 class="title default"><span>Hỗ trợ nhanh</span></h3>
+                <div class="item-support">
+                    <div class="row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="#" title="">
+                                <img th:src="@{/anh/support.png}" alt="" title="" class="ratio img-fluid center-block "
+                                     width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                        <span>
+                          <a href="tel:+0528699979">Văn Phúc</a>
+                        </span>
+                            <p><i class="fa fa-mobile" aria-hidden="true"></i> 0393186243</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-support">
+                    <div class="row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="#" title="">
+                                <img th:src="@{/anh/support.png}" alt="C" title=""
+                                     class="img-fluid center-block rounded-circle" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                      <span>
+                        <a href="tel:+0917365882">Văn Phúc</a>
+                      </span>
+                            <p><i class="fa fa-mobile" aria-hidden="true"></i> 0393186243</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="register">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-sm-12 col-md-5">
+                <div class="form">
+
+                    <form>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Số lô" id="so_lo">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Số block" id="so_block">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Dự án" id="du_an">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Giá bạn mong muốn" id="gia_ban">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Họ và tên" id="ho_ten">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Số điện thoại" id="sdt">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control" id="content"
+                                          placeholder="Nội dung cần gửi, thông tin bất động sản..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col text-center">
+                                <button type="button" class="btn bg-btn btn-sm" id="sendContact">Ký gửi ngay</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-7">
+                <p><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+                    NGAY BÂY GIỜ CÓ 296 KHÁCH HÀNG ĐANG XEM
+                </p>
+                <p><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+                    CHÚNG TÔI GIÚP BẠN GIỚI THIỆU ĐẤT CỦA MÌNH TỚI HÀNG NGHÌN NGƯỜI MỖI NGÀY
+                </p>
+                <p><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+                    DỊCH VỤ NÀY LÀ MIỄN PHÍ
+                </p>
+                <p><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+                    HÃY KÝ GỬI NGAY
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="news">
+    <div class="container">
+        <h3 class="title default"><span>Mua Bán Nhà Đất Đà Nẵng</span></h3>
+        <div class="muaban-list block-show-item">
+            <div style="display:none" hidden><em><i><input type="hidden" name="qquery" data-id="0"
+                                                           value="noi_bat_trang_chu=1"></i></em></div>
+            <ul class="ul_nhadat other row ul-show-item" >
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item" th:each="datDuAn : ${datDuAns}" data-id="0" th:if="datDuAns != null" >
+                    <div class="img">
+                        <a href=""><img class='img-responsive' src='anh/ban-dat-hoa-hiep-3-lien-chieu-da-nang.jpg'
+                                        alt='' title=''/></a>
+                    </div>
+                    <h3 class="nameSeo" >
+                        <a class="name" th:href="@{'/posts/' + ${datDuAn.seoObject.url}}" th:text="${datDuAn.title}">Bán đất ven biển Liên Chiểu Đà Nẵng: 81m2, Tây Bắc, ngan 6m, đối lưng
+                            Nguyễn Tất Thành</a>
+                    </h3>
+                    <div class="price_c" th:text="${'Giá: ' + datDuAn.price + ' tỷ'}">Giá: 2.8 Tỷ</div>
+                </li>
+            </ul>
+            <button class="click-show-items" type="button" data-id="0" data-limit="4" data-tongtrang="9"
+                    data-root="https://lamthanhtien.com" data-lang="vn" data-other="home2" data-cate="-1">XEM THÊM
+            </button>
+        </div>
+    </div>
+</section>
+<section id="news">
+    <div class="container">
+        <h3 class="title default"><span>Cho Thuê Nhà Đất Đà Nẵng</span></h3>
+        <div class="muaban-list block-show-item">
+            <div style="display:none" hidden><em><i><input type="hidden" name="qquery" data-id="0"
+                                                           value="noi_bat_trang_chu=1"></i></em></div>
+            <ul class="ul_nhadat other row ul-show-item" data-id="0">
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive' src='anh/ban-dat-hoa-hiep-3-lien-chieu-da-nang.jpg'
+                                        alt='' title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Bán đất ven biển Liên Chiểu Đà Nẵng: 81m2, Tây Bắc, ngan 6m, đối lưng
+                            Nguyễn Tất Thành</a>
+                    </h3>
+                    <div class="price_c">Giá: 2.8 Tỷ</div>
+
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/cho-thue-nha-duong-tran-nguyen-dan-(1).jpg'
+                                        alt='' title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Cho thuê nhà nguyên căn đường Trần Nguyên Đán: 200m2, 3 lầu, 3 PN, 3
+                            toilet, full nội thất</a>
+                    </h3>
+                    <div class="price_c">Giá: 22 Triệu/tháng</div>
+
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/ban-can-ho-hamony-tower-da-nang-(1).jpg' alt=''
+                                        title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Bán căn hộ Times Square Đà Nẵng - Kim Long Season Mỹ Khê: 55m2, giá từ
+                            2.5 đến 5 tỷ</a>
+                    </h3>
+                    <div class="price_c">Giá: 2.5 Tỷ</div>
+
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/ban-can-ho-hamony-tower-da-nang-(1).jpg' alt=''
+                                        title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Bán căn hộ Hamony Tower Đà Nẵng: Căn hộ cách biển 200m, 60m2, giá từ 2.3
+                            tỷ/căn</a>
+                    </h3>
+                    <div class="price_c">Giá: 2.3 Tỷ</div>
+
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/cho-thue-nha-kiet-trung-nu-vuong-(3).jpg'
+                                        alt='' title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Cho thuê nhà trung tâm quận Hải Châu, kiệt 448 Trưng Nữ Vương, 2PN, 2
+                            toilet, 54m2</a>
+                    </h3>
+                    <div class="price_c">Giá: 6 Triệu/tháng</div>
+
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/cho-thue-can-ho-chung-cu-son-tra-(1).jpg'
+                                        alt='' title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="h">Cho thuê căn hộ chung cư Nại Hiên Đông Sơn Trà: 2 PN, 1 PK, có sân
+                            phơi, giá chỉ 6.5 triệu</a>
+                    </h3>
+                    <div class="price_c">Giá: 6.5 Triệu/tháng</div>
+
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/cho-thu-nha-duong-2-thang-9-(1).jpg' alt=''
+                                        title=''/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Cho thuê nhà nguyên căn đường 2 tháng 9 Đà Nẵng: 4 tầng, 5 phòng, gần
+                            đường Tiểu La</a>
+                    </h3>
+                    <div class="price_c">Giá: 50 Triệu/tháng</div>
+
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item">
+                    <div class="img">
+                        <a href=""><img class='img-responsive ' src='anh/nha-mat-tien-le-lo-da-nang.jpg'
+                                        alt='Nha-mat-tien-le-lo-da-nang'
+                                        title='Bán nhà mặt tiền đường Lê Lộ, Ngũ Hành Sơn: 300m2, Đông Bắc, 4 tầng, giá hợp lý'/></a>
+                    </div>
+                    <h3 class="nameSeo">
+                        <a class="name" href="">Bán nhà mặt tiền đường Lê Lộ, Ngũ Hành Sơn: 300m2, Đông Bắc, 4 tầng, giá
+                            hợp lý</a>
+                    </h3>
+                    <div class="price_c">Giá: 12.8 Tỷ</div>
+
+                </li>
+            </ul>
+            <button class="click-show-items" type="button" data-id="0" data-limit="4" data-tongtrang="9"
+                    data-root="https://lamthanhtien.com" data-lang="vn" data-other="home2" data-cate="-1">XEM THÊM
+            </button>
+        </div>
+    </div>
+</section>
+<section id="news">
+    <div class="container">
+        <h3 class="title default"><span>Tin Tức Nhà Đất</span></h3>
+        <div class="row no-gutters">
+            <div class="col-12 col-sm-12 col-md-4">
+                <div class="row no-gutters item">
+                    <div class="col-4 col-sm-4 col-md-12">
+                        <div class="thumb">
+                            <a href="" title="">
+                                <img src="https://danangland.org/upload/tin-tuc-dat-da-nang/nhung-ly-do-nen-mua-dat-da-nang.jpg"
+                                     alt="" class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-12">
+                        <div class="entry-new">
+                        <span class="title">
+                            <a href="" title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này">
+                                Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này
+                              </a>
+                        </span>
+                            <span class="description">
+                            Tìm hiểu ngay những nguyên nhân nên mua đất Hoà Xuân ngay từ lúc này. Những dự báo mới nhất về đất nền Hoà Xuân sẽ cho bạn nhiều thông tin có nên mua đất Hoà Xuân không, tìm hiểu ngay
+                        </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4">
+                <div class="row no-gutters item">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <a href=""
+                           title="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua">
+                            <img src="anh/dat-hoa-xuan-tang-gia-giam-gia.jpg"
+                                 alt="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua"
+                                 title="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua"
+                                 class="img-fluid center-block" width="auto" height="auto">
+                        </a>
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-8">
+                        <div class="entry">
+                        <span class="title">
+                            <a href="" title="C">
+                                Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở l...
+                              </a>
+                        </span>
+                            <span class="description">
+                            Bạn đang tìm thông tin cập nhật mới nhất tại Hoà Xuân, hay tì...
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters item">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <a href="" title="">
+                            <img th:src="@{/anh/ban-dat-dao-vip-hoa-xuan-da-nang.jpg}" alt="" title=""
+                                 class="img-fluid center-block" width="auto" height="auto">
+                        </a>
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-8">
+                        <div class="entry">
+                        <span class="title">
+                            <a href="" title="">
+                                Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng
+                              </a>
+                        </span>
+                            <span class="description">
+                            Đất đảo vip Hòa Xuân Đà Nẵng là một trong những dự án mang nh...
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters item">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <a href="" title="">
+                            <img th:src="@{/anh/malibu-hoi-an.jpg}" alt="" title="" class="img-fluid center-block"
+                                 width="auto"
+                                 height="auto">
+                        </a>
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-8">
+                        <div class="entry">
+                        <span class="title">
+                            <a href="" title="">
+                                Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng...
+                              </a>
+                        </span>
+                            <span class="description">
+                            Dự án Malibu Hội An đang được mở bán với chiếc khấu và ưu đãi...
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters item">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <a href="" title="">
+                            <img th:src="@{anh/co-nen-mua-dat-thoi-diem-nay.jpg}" alt="" title=""
+                                 class="img-fluid center-block" width="auto" height="auto">
+                        </a>
+                    </div>
+                    <div class="col-8 col-sm-8 col-md-8">
+                        <div class="entry">
+                        <span class="title">
+                            <a href="" title="">
+                                Có nên mua đất Đà Nẵng vào thời điểm này để đầu tư
+                              </a>
+                        </span>
+                            <span class="description">
+                            Có nên mua đất Đà Nẵng đầu tư vào thời điểm này hay không, hã...
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-none d-md-block d-lg-block col-md-4">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmangdattourdulichdanang.d2tour%2F&tabs=timeline&width=300&height=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                        width="300" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowTransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="line_boder"></section>
+<section th:insert="~{fragments/footer :: footer}"></section>
+<a class="back-to-top">
+    <i class="fas fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
+</a>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    Common.init();
+</script>
+</body>
+</html>
