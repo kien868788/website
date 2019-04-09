@@ -30,6 +30,7 @@ public class FileController {
     @PreAuthorize("hasRole('ADMIN')")
     public @ResponseBody
     String fileUpload(@RequestParam("file") MultipartFile file) {
+        logger.info("Upload a file");
         try {
             if (!file.getOriginalFilename().isEmpty()) {
                 BufferedOutputStream outputStream =
