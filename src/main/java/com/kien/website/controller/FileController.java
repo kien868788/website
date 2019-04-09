@@ -19,7 +19,7 @@ public class FileController{
     @Autowired
     public HttpServletRequest request;
 
-    String path = "/home/kien/IdeaProjects/website/Images/";
+    String path = "/home/kien/images/";
 
     @PostMapping("/upload")
     @CrossOrigin
