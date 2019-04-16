@@ -57,17 +57,17 @@
                             <th scope="col">Pháp lý</th>
                             <th scope="col">Chi Tiết</th>
                         </tr>
-                        <div th:remove="tag" th:each="datDuAn : ${datDuAns}" th:if="${datDuAns != null}">
+                        <div th:remove="tag" th:each="realEstate : ${realEstates}" th:if="${realEstates != null}">
                             <tr class="hover-yellow">
-                                <td th:text="${datDuAn.location.name}">Quận Hải Ch&acirc;u</td>
+                                <td th:text="${realEstate.location.name}">Quận Hải Ch&acirc;u</td>
                                 <td>-</td>
-                                <td th:text="${datDuAn.block}">26</td>
-                                <td th:text="${datDuAn.lo + 'm'}"></td>
-                                <td><span th:text="${datDuAn.square + 'm'}"></span><sup>2</sup></td>
-                                <td th:text="${datDuAn.tag.direction}">Đ&ocirc;ng</td>
-                                <td th:text="${datDuAn.price + ' tỷ'}">5 Tỷ</td>
-                                <td th:text="${datDuAn.phapLy}">Sổ đỏ</td>
-                                <td><a th:href="@{'/posts/' + ${datDuAn.seoObject.url}}">Bấm xem</a></td>
+                                <td th:text="${realEstate.block}">26</td>
+                                <td th:text="${realEstate.lo + 'm'}"></td>
+                                <td><span th:text="${realEstate.square + 'm'}"></span><sup>2</sup></td>
+                                <td th:text="${realEstate.tag.direction}">Đ&ocirc;ng</td>
+                                <td th:text="${realEstate.price + ' tỷ'}">5 Tỷ</td>
+                                <td th:text="${realEstate.phapLy}">Sổ đỏ</td>
+                                <td><a th:href="@{'/realEstates/' + ${realEstate.seoObject.url}}">Bấm xem</a></td>
                             </tr>
                         </div>
                         </tbody>
@@ -257,16 +257,16 @@
             <div style="display:none" hidden><em><i><input type="hidden" name="qquery" data-id="0"
                                                            value="noi_bat_trang_chu=1"></i></em></div>
             <ul class="ul_nhadat other row ul-show-item" >
-                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item" th:each="datDuAn : ${datDuAns}" data-id="0" th:if="datDuAns != null" >
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 item" th:each="realEstate : ${realEstates}" data-id="0" th:if="realEstates != null" >
                     <div class="img">
                         <a href=""><img class='img-responsive' src='anh/ban-dat-hoa-hiep-3-lien-chieu-da-nang.jpg'
                                         alt='' title=''/></a>
                     </div>
                     <h3 class="nameSeo" >
-                        <a class="name" th:href="@{'/posts/' + ${datDuAn.seoObject.url}}" th:text="${datDuAn.title}">Bán đất ven biển Liên Chiểu Đà Nẵng: 81m2, Tây Bắc, ngan 6m, đối lưng
+                        <a class="name" th:href="@{'/realEstates/' + ${realEstate.seoObject.url}}" th:text="${realEstate.title}">Bán đất ven biển Liên Chiểu Đà Nẵng: 81m2, Tây Bắc, ngan 6m, đối lưng
                             Nguyễn Tất Thành</a>
                     </h3>
-                    <div class="price_c" th:text="${'Giá: ' + datDuAn.price + ' tỷ'}">Giá: 2.8 Tỷ</div>
+                    <div class="price_c" th:text="${'Giá: ' + realEstate.price + ' tỷ'}">Giá: 2.8 Tỷ</div>
                 </li>
             </ul>
             <button class="click-show-items" type="button" data-id="0" data-limit="4" data-tongtrang="9"

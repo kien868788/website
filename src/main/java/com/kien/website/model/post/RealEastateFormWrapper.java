@@ -6,8 +6,8 @@ import javax.validation.Valid;
 
 
 @Data
-public class PostFormWrapper {
+public class RealEastateFormWrapper {
     @Valid
-    private Post post;
+    private RealEstate realEstate;
     private Long category;
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div th:remove="tag" th:utext="${seo?.metas}"></div>
-    <title th:text="${post.title}">nhà đất đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+    <title th:text="${realEstate.title}">nhà đất đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
     <link rel="stylesheet" th:href="@{/styles/css.css}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <style>
@@ -27,25 +27,25 @@
         <div class="row no-gutters">
             <div class="col-12 col-md-8">
                 <div class="item-project">
-                    <p class="title" th:text="${post.title}">
+                    <p class="title" th:text="${realEstate.title}">
                     </p>
                     <div class="location">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="location">Khu vực</span>
-                        <a href="#" rel="tag" th:text="${post.location.name}">Cẩm Lệ</a>
+                        <a href="#" rel="tag" th:text="${realEstate.location.name}">Cẩm Lệ</a>
                     </div>
                     <div class="price-area">
                         Giá : <span class="value price">
-                  <span th:text="${post.price}"></span> tỷ VNĐ
+                  <span th:text="${realEstate.price}"></span> tỷ VNĐ
                  </span>
                         Diện tích : <span class="value"> <span
-                            th:text="${post.price}">200.00</span> m<sup>2</sup></span>
+                            th:text="${realEstate.price}">200.00</span> m<sup>2</sup></span>
                     </div>
                     <div class="realty-des"></div>
                     <div class="entry-content">
                         <div class="realty-infor">
                             <h3 class="info-des">Thông tin mô tả</h3>
-                            <div th:utext="${post.description} " id="description"></div>
+                            <div th:utext="${realEstate.description} " id="description"></div>
                         </div>
                         <div class="tags">
                             <span rel="noindex, nofollow">Tags: </span>
@@ -58,7 +58,7 @@
                                         <li>
                                             <span class="key">Địa chỉ</span>
                                             <span class="value">
-                                <a href="#" rel="tag" th:text="${post.location.name}">
+                                <a href="#" rel="tag" th:text="${realEstate.location.name}">
                                   Cẩm Lệ
                                 </a>                            
                                </span>
@@ -73,7 +73,7 @@
 
                                         <li>
                                             <span class="key">Ngày đăng tin</span>
-                                            <span class="value" th:text="${post.lastModified}">05/03/2019</span>
+                                            <span class="value" th:text="${realEstate.lastModified}">05/03/2019</span>
                                         </li>
                                         <li>
                                             <span class="key">Tình trạng</span>
@@ -83,17 +83,17 @@
                                         </li>
                                         <li>
                                             <span class="key">Block</span>
-                                            <span class="value" th:text="${post.block}">
+                                            <span class="value" th:text="${realEstate.block}">
                               </span>
                                         </li>
                                         <li>
                                             <span class="key">Lô</span>
-                                            <span class="value" th:text="${post.lo}">
+                                            <span class="value" th:text="${realEstate.lo}">
                               </span>
                                         </li>
                                         <li>
                                             <span class="key">Pháp lý</span>
-                                            <span class="value" th:text="${post.phapLy}">
+                                            <span class="value" th:text="${realEstate.phapLy}">
                               </span>
                                         </li>
                                     </ul>

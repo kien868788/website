@@ -1,8 +1,7 @@
 package com.kien.website.controller;
 
-import com.kien.website.model.post.Post;
-import com.kien.website.repository.PostRepository;
-import com.kien.website.service.PostService;
+import com.kien.website.model.post.RealEstate;
+import com.kien.website.repository.RealEstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,15 +19,15 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    PostService postService;
+    RealEstateRepository realEstateRepository;
 
     @GetMapping("/admin")
     public String adminLogin(Model model) {
         Pageable pageable = PageRequest.of(0,50,Sort.by("lastModified"));
-        Page<Post> postPage = postService.findAll(pageable);
-        if (postPage.hasContent()) {
-            List<Post> posts = postPage.getContent();
-            model.addAttribute("posts",posts);
+        Page<RealEstate> realEstatesPage = realEstateRepository.findAll(pageable);
+        if (realEstatesPage.hasContent()) {
+            List<RealEstate> realEstates = realEstatesPage.getContent();
+            model.addAttribute("realEstates", realEstates);
         }
         return "users/admin";
     }

@@ -28,18 +28,18 @@
                     </a>
                 </p>
 
-                <div class="list-item" th:if="${posts != null}" th:each="post : ${posts}">
+                <div class="list-item" th:if="${realEstates != null}" th:each="realEstate : ${realEstates}">
                     <div class="col-8 col-md-9">
                         <h3>
-                            <a th:href="@{'/posts/' + ${post.seoObject.url}}" th:text="${post.title}">
+                            <a th:href="@{'/posts/' + ${realEstate.seoObject.url}}" th:text="${realEstate.title}">
                             </a>
                         </h3>
                         <div>
-                            <a th:href="@{'/posts/' + ${post.id} + '?form'}" style="color: red"> chỉnh sửa</a>
+                            <a th:href="@{'/posts/' + ${realEstate.id} + '?form'}" style="color: red"> chỉnh sửa</a>
                             &nbsp &nbsp &nbsp &nbsp
-                            <a th:href="@{'/posts/delete?id='+${post.id}}" style="color: red"> xóa</a>
+                            <a th:href="@{'/posts/delete?id='+${realEstate.id}}" style="color: red"> xóa</a>
                             <div style="display: inline; float: right;">
-                                Ngày đăng : <span th:text="${post.lastModified}"></span>
+                                Ngày đăng : <span th:text="${realEstate.lastModified}"></span>
                             </div>
                         </div>
                     </div>

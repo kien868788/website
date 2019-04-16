@@ -3,7 +3,6 @@ package com.kien.website.model.post;
 import com.kien.website.model.Category;
 import com.kien.website.model.Location;
 import com.kien.website.model.SEOObject;
-import com.kien.website.model.user.User;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Generated;
@@ -14,13 +13,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "POST")
-public class Post {
+@Table(name = "RealEstate")
+public class RealEstate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,7 +61,8 @@ public class Post {
     @JoinColumn(name = "CATEGORY_ID",nullable = false)
     private Category category;
 
-    public Post() {
+    public RealEstate() {
     }
+
 }
 

@@ -25,11 +25,11 @@ public class FileController {
 
     String path = "/home/kien/images/";
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/upload")
     @CrossOrigin
-    @PreAuthorize("hasRole('ADMIN')")
     public @ResponseBody
-    String fileUpload(@RequestParam("file") MultipartFile file) {
+    ResponseEntity<String> fileUpload(@RequestParam("file") MultipartFile file) {
         logger.info("Upload a file");
         try {
             if (!file.getOriginalFilename().isEmpty()) {
@@ -46,12 +46,13 @@ public class FileController {
         } catch (Exception e) {
             logger.error("Can't upload image",e);
         }
-        return request.getRequestURL().toString().replace("upload", file.getOriginalFilename());
+        return ResponseEntity.ok(request.getRequestURL().toString().replace("upload", file.getOriginalFilename()));
     }
 
     @GetMapping("/{url}")
     @ResponseBody
     public void getFile(@PathVariable("url") String url, HttpServletResponse response) throws Exception {
+        logger.info("Getting a image");
         InputStream inputStream = new FileInputStream(
                 new File(path + url)
         );

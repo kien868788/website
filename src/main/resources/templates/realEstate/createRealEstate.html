@@ -5,10 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="Expires" content="30"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
     <link rel="stylesheet" th:href="@{/styles/css.css}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 <header th:insert="~{fragments/header :: header}"></header>
@@ -19,55 +23,54 @@
             <div class="col-12 col-md-8">
                 <div class="item-project">
                     <form id="postForm">
-                        <input type="hidden" name="id" th:value="${post.id}">
-                        <input th:type="hidden" name="idSeoObject" th:value="${seo.id}">
+                        <input type="hidden" name="id">
                         <div class="title">
                             <label>
                                 title:
-                                <input type="text" name="title" th:value="${post.title}">
+                                <input type="text" name="title" >
                             </label>
                         </div>
                         <div class="price-area">
                             <label>
                                 Block:
-                                <input  type="text" name="block" style="width: 100px;" th:value="${post.block}">
+                                <input  type="text" name="block" style="width: 100px;">
                             </label>
                             <label>
                                 Lô
-                                <input  type="number" name="lo" style="width: 70px;" th:value="${post.lo}">
+                                <input  type="number" name="lo" style="width: 70px;">
                             </label>
                             <label>
                                 Diện tích:
-                                <input type="number" name="square" style="width: 70px;" th:value="${post.square}">
+                                <input type="number" name="square" style="width: 70px;">
                                 m <sup>2</sup>
                             </label>
                             <label>
                                 Giá:
-                                <input  type="number" name="price" style="width: 70px;" th:value="${post.price}">
+                                <input  type="number" name="price" style="width: 70px;">
                             </label>
                             <div>
                                 <label>
                                     Đường:
-                                    <input  type="text" name="street" style="width: 200px;" th:value="${post.street}">
+                                    <input  type="text" name="street" style="width: 200px;">
                                 </label>
                             </div>
                             <div class="">
                                 <label>
                                     Pháp Lý:
-                                    <input  type="text" name="phapLy" style="width: 200px;" th:value="${post.phapLy}">
+                                    <input  type="text" name="phapLy" style="width: 200px;">
                                 </label>
                             </div>
                             <div>
                                 <label>
                                     Địa điểm:
                                     <select name="locationId" >
-                                        <option value="1" th:selected="${post.location.id == 1}">Quận Hải Châu</option>
-                                        <option value="2" th:selected="${post.location.id == 2}">Quận Cẩm Lệ</option>
-                                        <option value="3" th:selected="${post.location.id == 3}">Quận Thanh Khê</option>
-                                        <option value="4" th:selected="${post.location.id == 4}">Quận Liên Chiểu</option>
-                                        <option value="5" th:selected="${post.location.id == 5}">Quận Ngũ Hành Sơn</option>
-                                        <option value="6" th:selected="${post.location.id == 6}">Quận Sơn Trà</option>
-                                        <option value="7" th:selected="${post.location.id == 7}">Huyện Hòa Vang</option>
+                                        <option value="1">Quận Hải Châu</option>
+                                        <option value="2" >Quận Cẩm Lệ</option>
+                                        <option value="3" >Quận Thanh Khê</option>
+                                        <option value="4" >Quận Liên Chiểu</option>
+                                        <option value="5" >Quận Ngũ Hành Sơn</option>
+                                        <option value="6" >Quận Sơn Trà</option>
+                                        <option value="7" >Huyện Hòa Vang</option>
                                     </select>
                                 </label>
                             </div>
@@ -75,8 +78,8 @@
                                 <label>
                                     Thể loại:
                                     <select name="category">
-                                        <option value="1" th:selected="${post.category.id == 1}">Mua Bán Nhà Đất Đà Nẵng</option>
-                                        <option value="2" th:selected="${post.category.id == 2}">Cho Thuê Bán Nhà Đất Đà Nẵng</option>
+                                        <option value="1" >Mua Bán Nhà Đất Đà Nẵng</option>
+                                        <option value="2" >Cho Thuê Bán Nhà Đất Đà Nẵng</option>
                                     </select>
                                 </label>
                             </div>
@@ -100,11 +103,11 @@
                                         <ul>
                                             <li>
                                                 <span class="key">Hướng</span>
-                                                <input th:value="${tag.direction}" type="text" name="direction" style="width: 160px;">
+                                                <input type="text" name="direction" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Tình trạng</span>
-                                                <input th:value="${tag.status}" type="text" name="status" style="width: 160px;">
+                                                <input type="text" name="status" style="width: 160px;">
                                             </li>
                                         </ul>
                                     </div>
@@ -113,23 +116,23 @@
                                         <ul>
                                             <li>
                                                 <span class="key">Tên liên lạc</span>
-                                                <input th:value="${tag.name}" type="text" name="nameContact" style="width: 160px;">
+                                                <input type="text" name="nameContact" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Điện thoại</span>
-                                                <input th:value="${tag.phonenumber}" type="text" name="phonenumber" style="width: 160px;">
+                                                <input type="text" name="phonenumber" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Zalo</span>
-                                                <input th:value="${tag.zalo}" type="text" name="zalo" style="width: 160px;">
+                                                <input type="text" name="zalo" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Skype</span>
-                                                <input th:value="${tag.skype}" type="text" name="skype" style="width: 160px;">
+                                                <input type="text" name="skype" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Email</span>
-                                                <input th:value="${tag.email}" type="email" name="email" style="width: 160px;">
+                                                <input type="email" name="email" style="width: 160px;">
                                             </li>
                                         </ul>
                                     </div>
@@ -137,10 +140,10 @@
                             </div>
                             <div class="realty-infor">
                                 <h3 class="info-des">Meta tags: </h3>
-                                <textarea th:text="${seo.metas}" name="metas" rows="8" style="width: 100%;"></textarea>
+                                <textarea name="metas" rows="8" style="width: 100%;"></textarea>
                             </div>
                         </div>
-                        <button id="updateButton" type="button" name="button">Update</button>
+                        <button id="postFormButton" type="button" name="button">Save</button>
                     </form>
                 </div>
             </div>
@@ -154,8 +157,5 @@
 </a>
 <div id="fb-root"></div>
 <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
-<script th:inline="javascript">
-    window.editor.setData([[${post.description}]])
-</script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-package com.kien.website.model.news;
+package com.kien.website.model.post;
 
 import com.kien.website.model.SEOObject;
-import com.kien.website.model.user.User;
 import lombok.Data;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;

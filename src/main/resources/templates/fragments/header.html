@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="top-phone col-12 col-md-8">
-                    <h1 th:text="${post != null ? post.title : 'Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ'}"></h1>
+                    <h1 th:text="${realEstate != null ? realEstate.title : 'Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ'}"></h1>
                 </div>
                 <div class="login-logout col-12 col-md-4" sec:authorize="isAuthenticated()">
                     <ul>

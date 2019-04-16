@@ -1,9 +1,9 @@
 package com.kien.website.controller;
 
 import com.kien.website.model.Category;
-import com.kien.website.model.post.Post;
+import com.kien.website.model.post.RealEstate;
 import com.kien.website.repository.CategoryRepository;
-import com.kien.website.service.PostService;
+import com.kien.website.repository.RealEstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,18 +17,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     @Autowired
-    PostService postService;
+    RealEstateRepository realEstateRepository;
 
     @Autowired
     CategoryRepository categoryRepository;
 
     @GetMapping("/")
     public String index(Model model) {
-        Pageable pageableDatDuAn = PageRequest.of(0,8, Sort.by("lastModified"));
+        Pageable pageableRealEstate = PageRequest.of(0,8, Sort.by("lastModified"));
         Category datDuAn = categoryRepository.findById(1l).get();
-        Page<Post> postPageDatDuAn = postService.findByCategory(datDuAn,pageableDatDuAn);
-        if(postPageDatDuAn.hasContent()) {
-            model.addAttribute("datDuAns",postPageDatDuAn.getContent());
+        Page<RealEstate> realEstatePage = realEstateRepository.findAllByCategory(datDuAn,pageableRealEstate);
+        if(realEstatePage.hasContent()) {
+            model.addAttribute("realEstates",realEstatePage.getContent());
         }
         return "index";
     }

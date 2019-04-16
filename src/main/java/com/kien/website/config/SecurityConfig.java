@@ -21,9 +21,6 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DataSource dataSource;
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -59,9 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/users/**").hasAnyRole("ADMIN")
                     .anyRequest()
-                    .permitAll()
-                .and()
-                .csrf()
-                    .disable();
+                    .permitAll();
     }
 }

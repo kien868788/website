@@ -3,25 +3,23 @@ package com.kien.website.service;
 import com.kien.website.model.Category;
 import com.kien.website.model.Location;
 import com.kien.website.model.SEOObject;
-import com.kien.website.model.post.Post;
+import com.kien.website.model.post.RealEstate;
 import com.kien.website.model.post.Tag;
-import com.kien.website.model.user.User;
 import com.kien.website.repository.CategoryRepository;
 import com.kien.website.repository.LocationRepository;
-import com.kien.website.repository.UserRepository;
+import com.kien.website.repository.NewsRepository;
+import com.kien.website.repository.RealEstateRepository;
 import com.kien.website.util.UrlUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Service
 public class DBInitializer {
@@ -31,25 +29,19 @@ public class DBInitializer {
     @PersistenceContext
     EntityManager em;
 
-    private NewsService newsService;
-    private PostService postService;
+    @Autowired
+    private NewsRepository newsRepository;
+    @Autowired
+    private RealEstateRepository realEstateRepository;
+    @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private LocationRepository locationRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
-    public DBInitializer(NewsService newsService, PostService postService, CategoryRepository categoryRepository) {
-        this.newsService = newsService;
-        this.postService = postService;
-        this.categoryRepository = categoryRepository;
-    }
 
     @PostConstruct
     public void initDB() {
@@ -77,17 +69,17 @@ public class DBInitializer {
         locationRepository.save(quanSonTra);
         Location huyenHoaVang = new Location("Huyện Hòa Vang");
         locationRepository.save(huyenHoaVang);
-        Post post = new Post();
-        post.setTitle("Nhà 10 tỷ");
-        post.setBlock("adsfads");
-        post.setLo(3);
-        post.setSquare(3434);
-        post.setPrice(new BigDecimal(343434));
-        post.setStreet("Nguyễn Tất Thành");
-        post.setPhapLy("asdfasdfsdafasdfasdfhaskdjfh");
-        post.setLocation(quanSonTra);
-        post.setCategory(datDuAn);
-        post.setDescription("Thong tin mo ta " +
+        RealEstate realEstate = new RealEstate();
+        realEstate.setTitle("Nhà 10 tỷ");
+        realEstate.setBlock("adsfads");
+        realEstate.setLo(3);
+        realEstate.setSquare(3434);
+        realEstate.setPrice(new BigDecimal(343434));
+        realEstate.setStreet("Nguyễn Tất Thành");
+        realEstate.setPhapLy("asdfasdfsdafasdfasdfhaskdjfh");
+        realEstate.setLocation(quanSonTra);
+        realEstate.setCategory(datDuAn);
+        realEstate.setDescription("Thong tin mo ta " +
                 "adsfá" +
                 "dfá" +
                 "df" +
@@ -105,10 +97,10 @@ public class DBInitializer {
         tag.setZalo("0868788245");
         tag.setSkype("kien868788@gmail.com");
         tag.setEmail("kien868788@gmail.com");
-        post.setTag(tag);
+        realEstate.setTag(tag);
         SEOObject seoObject = new SEOObject();
-        seoObject.setUrl(UrlUtil.handleTitle(post.getTitle()));
-        post.setSeoObject(seoObject);
-        postService.save(post);
+        seoObject.setUrl(UrlUtil.handleTitle(realEstate.getTitle()));
+        realEstate.setSeoObject(seoObject);
+        realEstateRepository.save(realEstate);
     }
 }
