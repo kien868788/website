@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+            integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <title>Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<nav th:insert="~{fragments/header :: nav}"></nav>
+<style>
+    .sticky {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        border-top: 0;
+    }
+</style>
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    var navbar = document.getElementById("menu");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+
+<section id="category">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-8">
+                <p class="title" th:text="'Mua Bán Đất ' + ${location.name}">
+                </p>
+                <div class="list-item" th:if="${realEstates != null}" th:each="realEstate : ${realEstates}">
+                    <div class="row no-gutters">
+                        <div class="col-4 col-md-3">
+                            <a href="" title="">
+                                <img src="anh/default-post-home.png" alt="" title="" class="img-fluid center-block"
+                                     width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-md-9">
+                            <h3>
+                                <a th:href="@{${realEstate.category} + ${realEstate.seoObject.url}}"
+                                   th:text="${realEstate.title}">
+                                </a>
+                            </h3>
+                            <p class="date">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span th:text="${realEstate.lastModified}"></span>
+                            </p>
+                            <p class="des">
+                            </p>
+                            <div class="detail">
+                                <div class="price">
+                                    <i class="fa fa-tags" aria-hidden="true"></i>
+                                    Giá: <span th:text="${realEstate.price}"></span> tỷ
+                                </div>
+                                <div class="area">
+                                    <i class="far fa-square" aria-hidden="true"></i>
+                                    Diện tích : <span th:text="${realEstate.square}"></span> m2
+                                </div>
+                                <div class="location">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    Vị trí : <span th:text="${realEstate.location.name}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pagination list-inline">
+
+                </ul>
+                <p>
+                <p style="text-align:justify">Những nhà đầu tư bất động sản trên cả nước chắc hẳn không còn lạ gì dự án
+                    đất hòa Xuân Đà Nẵng. Việc sở hữu những lô đất ở khu sinh thái Hòa Xuân là điều trong mơ của bất kì
+                    ai. Từ khi mở dự án việc mua bán đất ở đây diễn ra sôi nổi hơn bao giờ hết. Với những điểm nổi bậc
+                    của dự án <a href="https://danangland.org/du-an-dat-hoa-xuan"><strong>đất Hòa Xuân</strong></a> như
+                    4 mặt đều tiếp giáp với sông. Vị trí đắc địa: Ở phía Bắc thì chỉ các khu giải trí bậc nhất châu Á
+                    Asian Park, phía đông thì giáp với trung tâm thành phố, các khu hành chính như kho bạc , công viên,
+                    thường học , khu hành chính nhà cục thuế, đồn công an, bệnh viện. Dọc theo phía nam thì giáp với khu
+                    biệt thự, điểm du lịch văn hóa và các làng đại học không quá 5 phút. 3 hướng của khu đô thị sinh
+                    thái là điều mà khiến các nhà đầu tư luôn săn đón từng lô đất một.</p>
+
+                <p style="text-align:justify">Bên cạnh những lợi ích kể trên thì nơi đây đã được đầu tư rất thốt về giao
+                    thông và cơ sở hạ tầng. Khu đất nằm sau lưng đường Nguyễn Phước Lan tuyến đường là cầu nỗi giữa hai
+                    quận là Cẩm Lệ và Ngũ hành sơn Tất cả các tuyến đường của khu sinh thái nam hoàn xuân đều là 7.5m và
+                    10.5m do đó di chuyển đi lại vô cùng thuận lời. Trong lòng dự án đang triển khai xây dựng các cấp
+                    trường học, tích hợp khu mua sắm, giải trí cũng như đầu tư không gian xanh. Do đó Đất hòa xuân luôn
+                    được săn đón bởi rất nhiều người trong và ngoài tỉnh thành.Việc mua đất Đà Nẵng tại khu vực Hòa xuân
+                    để xây nhà tại khu này đang được rất nhiều người chú ý tới.</p>
+
+                <p style="text-align:justify">Nếu bạn muốn tìm <a href="https://danangland.org"><strong>đất Đà
+                    Nẵng</strong></a> khu sinh thái Hòa Xuân hãy liên hệ với danangland.org để biết thêm những thông tin
+                    về những lô đất đang bán, mức giá chiết khấu từ các nhà đầu tư. Nếu bạn đã mua đất tại đây và có nhu
+                    cầu rao bán, chúng tôi cung cấp dịch vụ đăng tin miễn phí cũng như hổ trợ thông tin người cần mua
+                    đất tốt nhất.</p>
+                <p style="text-align:justify">Danangland.org hân hạnh là đơn vị hỗ trợ mua bán Bất Động Sản Đà Nẵng uy
+                    tín bậc nhất khu vực miền trung. Hoạt động trong lĩnh vực bất động sản nhiều năm qua chúng tôi rất
+                    vui khi nhận được sự tin tưởng của các nhà đầu tư và mua bán đất trên địa bàn thành phố cũng như
+                    ngoại tỉnh. Đội ngũ nhân viên và tư vấn sẽ giúp bạn tìm được những lô đất phù hợp với nhu cầu của
+                    bạn nhất. Cũng như giúp bạn bán đất thuận lợi, tránh các trường hợp nhà đất ảo rình rập hiện
+                    nay.</p>
+                </p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4">
+                <aside id="widget" class="d-none d-md-block d-lg-block">
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <a href="" title="">
+                                <img src="anh/nguyen-tri-phuong-da-nang.jpg" alt="" title=""
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+                <aside id="widget-news">
+                    <h2 class="title">
+                        Tin Nổi Bật
+                    </h2>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="" title="" class="title-image">
+                                <img src="anh/dat-hoa-xuan-1.jpg" alt="" class="img-fluid center-block" width="auto"
+                                     height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="y" title="">
+                                    Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="" title="" class="title-image">
+                                <img src="anh/nhung-ly-do-nen-mua-dat-da-nang.jpg" alt="" title=""
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="" title="">
+                                    Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="" title="" class="title-image">
+                                <img src="anh/dat-hoa-xuan-tang-gia-giam-gia.jpg" alt="" title=""
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="" title="">
+                                    Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="" title="" class="title-image">
+                                <img src="anh/ban-dat-dao-vip-hoa-xuan-da-nang.jpg" alt="=" title="="
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="=" title="">
+                                    Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="" title="" class="title-image">
+                                <img src="anh/malibu-hoi-an.jpg" alt="" title="" class="img-fluid center-block"
+                                     width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="" title="">
+                                    Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng Nam
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer-distributed">
+    <footer class="container">
+
+        <div class="footer-left">
+
+            <div><a href=""><img class="logo_bot" src="anh/logochuan.png" alt=""/></a></div>
+
+            <div class="footer-links">
+                <p>Địa chỉ &nbsp;: abc xyz </p>
+
+                <p>Điện thoại&nbsp;: 123456789</p>
+
+                <p>Email &nbsp;: Info@com</p>
+            </div>
+            <div class="footer-icons">
+
+                <a href="#"><i class="fab fa-facebook-square fa-3x"></i></a>
+                &nbsp; &nbsp; &nbsp;
+                <a href="#"><i class="fab fa-twitter-square fa-3x"></i></a>
+                &nbsp; &nbsp; &nbsp;
+                <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
+                &nbsp; &nbsp; &nbsp;
+                <a href="#"><i class="fab fa-google-plus-square fa-3x"></i></a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+            <div>
+                <p style="text-align: center;"> <h4>LIÊN HỆ VỚI CHÚNG TÔI</h4></p>
+            </div>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Họ Tên"/>
+                <input type="text" name="phonenumber" placeholder="Số Điện Thoại"/>
+                <input type="text" name="email" placeholder="Email"/>
+                <textarea name="message" placeholder="Tin Nhắn "></textarea>
+                <button>Send</button>
+            </form>
+        </div>
+    </footer>
+</section>
+<a class="back-to-top">
+    <i class="fas fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
+</a>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    Common.init();
+</script>
+</body>
+</html>

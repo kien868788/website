@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 <html lang="vn" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Expires" content="30"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>nhà đất đà nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+            integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="javascript.js"></script>
+    <title>Quản trị</title>
     <link rel="stylesheet" th:href="@{/styles/css.css}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
-
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 <nav th:insert="~{fragments/header :: nav}"></nav>
 <section id="category">
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-12 col-md-8">
-                <p class="title">
-                    Các Bài Đã Viết
-                    <a th:href="@{/posts?form}">
-                        <span style="float: right; ">Tạo Bài Viết</span>
-                    </a>
+            <div class="col-md-12">
+                <p class="title" style="text-align: center;">
+                    <a th:href="@{/bat-dong-san?form}"><button>Mua Bán</button></a>
+                    &nbsp &nbsp &nbsp &nbsp
+                    <a th:href="@{/nha-cho-thue?form}"><button> Cho Thuê</button></a>
+                    &nbsp &nbsp &nbsp &nbsp
+                    <a th:href="@{/tin-tuc?form}"><button> Tin Tức</button></a>
                 </p>
-
-                <div class="list-item" th:if="${realEstates != null}" th:each="realEstate : ${realEstates}">
-                    <div class="col-8 col-md-9">
-                        <h3>
-                            <a th:href="@{'/posts/' + ${realEstate.seoObject.url}}" th:text="${realEstate.title}">
-                            </a>
-                        </h3>
-                        <div>
-                            <a th:href="@{'/posts/' + ${realEstate.id} + '?form'}" style="color: red"> chỉnh sửa</a>
-                            &nbsp &nbsp &nbsp &nbsp
-                            <a th:href="@{'/posts/delete?id='+${realEstate.id}}" style="color: red"> xóa</a>
+            </div>
+            <div class=" col-sm-6">
+                <p class="title">
+                    Các bài Cho Thuê Bán Nhà Đã Viết
+                </p>
+                <div class="list-item" th:if="${sellPosts != null}" th:each="sellPost : ${sellPosts}">
+                    <div>
+                        <div class="col-md-12">
+                            <h3>
+                                <a th:href="@{${sellPost.category} + ${sellPost.seoObject.url}}" th:text="${sellPost.title}">
+                                </a>
+                            </h3>
+                            <div>
+                                <a th:href="@{${sellPost.category} + ${sellPost.getId()} + '?form'}" style="color: red"> chỉnh sửa</a>
+                                &nbsp &nbsp &nbsp &nbsp
+                                <a th:href="@{${sellPost.category} + 'delete?id='+${sellPost.getId()}}" style="color: red"> xóa</a>
+                                <div style="display: inline; float: right;">
+                                    Ngày đăng : <span th:text="${sellPost.lastModified}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-6">
+                <p class="title">
+                    Các bài Tin Tức Đã Viết
+                </p>
+                <div class="list-item" th:if="${newses != null}" th:each="news : ${newses}">
+                    <div>
+                        <div class=" col-md-12">
+                            <h3>
+                                <a th:href="@{'/tin-tuc/' + ${news.seoObject.url}}" th:text="${news.title}">
+                                </a>
+                            </h3>
+                            <div>
+                                <a th:href="@{'/tin-tuc/' + ${news.getId()} + '?form'}" style="color: red"> chỉnh sửa</a>
+                                &nbsp &nbsp &nbsp &nbsp
+                                <a th:href="@{'/tin-tuc/delete?id=' + ${news.getId()}}" style="color: red"> xóa</a>
+                            </div>
                             <div style="display: inline; float: right;">
-                                Ngày đăng : <span th:text="${realEstate.lastModified}"></span>
+                                Ngày đăng: <span th:text="${news.lastModified}"></span>
                             </div>
                         </div>
                     </div>
@@ -49,5 +77,4 @@
     </div>
 </section>
 </body>
-
 </html>

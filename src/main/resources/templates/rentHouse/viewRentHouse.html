@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:remove="tag" th:utext="${seo?.metas}"></div>
+    <title th:text="${rentHouse.title}">nhà đất đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style>
+        .sticky {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-top: 0;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<nav th:insert="~{fragments/header :: nav}"></nav>
+<section id="single-project">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-8">
+                <div class="item-project">
+                    <p class="title" th:text="${rentHouse.title}">
+                    </p>
+                    <div class="location">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="location">Khu vực</span>
+                        <a href="#" rel="tag" th:text="${rentHouse.location.name}">Cẩm Lệ</a>
+                    </div>
+                    <div class="price-area">
+                        Giá : <span class="value price">
+                  <span th:text="${rentHouse.price}"></span> tỷ VNĐ
+                 </span>
+                        Diện tích : <span class="value"> <span
+                            th:text="${rentHouse.price}">200.00</span> m<sup>2</sup></span>
+                    </div>
+                    <div class="realty-des"></div>
+                    <div class="entry-content">
+                        <div class="realty-infor">
+                            <h3 class="info-des">Thông tin mô tả</h3>
+                            <div th:utext="${rentHouse.description} " id="description"></div>
+                        </div>
+                        <div class="tags" >
+                            <span rel="noindex, nofollow">Tags: </span>
+                        </div>
+                        <div class="realty-contact" >
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h3>Đặc điểm bất động sản</h3>
+                                    <ul>
+                                        <li>
+                                            <span class="key">Địa chỉ</span>
+                                            <span class="value">
+                                <a href="#" rel="tag" th:text="${rentHouse.location.name}">
+                                  Cẩm Lệ
+                                </a>
+                               </span>
+                                        </li>
+
+                                        <li>
+                                            <span class="key">Hướng</span>
+                                            <span class="value"><a href="#" rel="tag" th:text="${tag.direction}">
+                              </a></span>
+                                        </li>
+
+                                        <li>
+                                            <span class="key">Ngày đăng tin</span>
+                                            <span class="value" th:text="${rentHouse.lastModified}">05/03/2019</span>
+                                        </li>
+                                        <li>
+                                            <span class="key">Tình trạng</span>
+                                            <span class="value" th:text="${tag.status}">
+                                Đang giao dịch
+                              </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3>Thông tin liên hệ</h3>
+                                    <ul>
+                                        <li>
+                                            <span class="key">Tên liên lạc</span>
+                                            <span class="value" th:text="${tag.name} != null ? ${tag.name} : ''"></span>
+                                        </li>
+                                        <li>
+                                            <span class="key">Điện thoại</span>
+                                            <span class="value" th:text="${tag.phonenumber != null } ? ${tag.phonenumber} : ''">
+                              <a href="tel:">
+                            </a>
+                              </span>
+                                        </li>
+                                        <li>
+                                            <span class="key">Zalo</span>
+                                            <span class="value" th:text="${tag.zalo} != null ? ${tag.zalo} : ''">
+                              <a href="tel:">
+                              </a>
+                              </span>
+                                        </li>
+                                        <li>
+                                            <span class="key">Skype</span>
+                                            <span class="value" th:text="${tag.skype} != null ? ${tag.skype} : ''">
+                              <a href="skype:">
+                              </a>
+                              </span>
+                                        </li>
+                                        <li>
+                                            <span class="key">Email</span>
+                                            <span class="value" th:text="${tag.email } != null ? ${tag.email} : ''">
+                              <a href="mailto:vovanphuc100598@gmail.com">
+                              </a>
+                              </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="form-contact" id="frm-info-project">
+                    <input type="hidden" name="_token" value="IOfdRD9cteETTScNrmUJ81rEHdPHVCNhfNQqXXSj"> <input
+                        type="hidden" class="form-control" id="slug"
+                        value="https://danangland.org/du-an-dat-hoa-xuan/ban-dat-hoa-xuan-vo-chi-cong-noi-dai-gia-thi-truong-lo-1516-1551775556">
+                    <h3>Liên Hệ</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Họ Tên</label>
+                            <input type="text" class="form-control" id="username" placeholder="Nguyễn Văn A">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">Số Điện Thoại</label>
+                            <input type="text" class="form-control" id="phone" placeholder="0917 365 882">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="abcxyz@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Nội Dung</label>
+                        <textarea class="form-control" id="content"></textarea>
+                    </div>
+                    <button type="button" class="btn bg-btn btn-sm" id="sendInfo">Gửi</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4">
+                <aside id="widget" class="d-none d-md-block d-lg-block">
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <a href="https://danangland.org" title="bản đồ nguyễn tri phương">
+                                <img src="https://danangland.org/upload/upload/banner/nguyen-tri-phuong-da-nang.jpg"
+                                     alt="bản đồ nguyễn tri phương" title="bản đồ nguyễn tri phương"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+                <aside id="widget-news">
+                    <h2 class="title">
+                        Tin Nổi Bật
+                    </h2>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/nhung-ly-do-nen-mua-dat-hoa-xuan-dau-tu-ngay-luc-nay"
+                               title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này" class="title-image">
+                                <img src="https://danangland.org/upload/dat-hoa-xuan-1.jpg"
+                                     alt="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này"
+                                     title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/nhung-ly-do-nen-mua-dat-hoa-xuan-dau-tu-ngay-luc-nay"
+                                   title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này">
+                                    Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/nhung-ly-do-nen-mua-dat-hoa-xuan-dau-tu"
+                               title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này" class="title-image">
+                                <img src="https://danangland.org/upload/tin-tuc-dat-da-nang/nhung-ly-do-nen-mua-dat-da-nang.jpg"
+                                     alt="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này"
+                                     title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/nhung-ly-do-nen-mua-dat-hoa-xuan-dau-tu"
+                                   title="Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này">
+                                    Những lý do nên mua đất Hoà Xuân đầu tư ngay lúc này
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/cap-nhat-tinh-hinh-dat-hoa-xuan-bien-dong-tang-giam-sot-tro-lai"
+                               title="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua"
+                               class="title-image">
+                                <img src="https://danangland.org/upload/tin-tuc-dat-da-nang/dat-hoa-xuan-tang-gia-giam-gia.jpg"
+                                     alt="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua"
+                                     title="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/cap-nhat-tinh-hinh-dat-hoa-xuan-bien-dong-tang-giam-sot-tro-lai"
+                                   title="Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua">
+                                    Cập nhật tình hình đất Hòa Xuân biến động tăng giảm sốt trở lại thời gian qua
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/mua-ban-dat-du-an-dao-vip-hoa-xuan-da-nang"
+                               title="Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng" class="title-image">
+                                <img src="https://danangland.org/upload/tin-tuc-dat-da-nang/ban-dat-dao-vip-hoa-xuan-da-nang.jpg"
+                                     alt="Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng"
+                                     title="Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/mua-ban-dat-du-an-dao-vip-hoa-xuan-da-nang"
+                                   title="Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng">
+                                    Thông Tin Mua Bán Đất dự án Đảo Vip Hòa Xuân Đà Nẵng
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/thong-tin-chi-tiet-du-an-can-ho-condotel-malibu-hoi-an-quang-nam"
+                               title="Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng Nam"
+                               class="title-image">
+                                <img src="https://danangland.org/upload/malibu-hoi-an.jpg"
+                                     alt="Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng Nam"
+                                     title="Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng Nam"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/thong-tin-chi-tiet-du-an-can-ho-condotel-malibu-hoi-an-quang-nam"
+                                   title="Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng Nam">
+                                    Thông tin chi tiết dự án căn hộ condotel Malibu Hội An Quảng Nam
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="line_boder"></section>
+<a class="back-to-top">
+    <i class="fas fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
+</a>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    var navbar = document.getElementById("menu");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    Common.init();
+</script>
+</body>
+</html>

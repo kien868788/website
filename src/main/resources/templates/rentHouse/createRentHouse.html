@@ -8,9 +8,10 @@
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</title>
-    <link rel="stylesheet" th:href="@{/styles/css.css}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 <header th:insert="~{fragments/header :: header}"></header>
@@ -20,56 +21,41 @@
         <div class="row no-gutters">
             <div class="col-12 col-md-8">
                 <div class="item-project">
-                    <form id="realEstateForm">
-                        <input type="hidden" name="id" th:value="${realEstate.id}">
-                        <input th:type="hidden" name="idSeoObject" th:value="${seo.id}">
+                    <form id="rentHouseForm">
+                        <input type="hidden" name="id">
                         <div class="title">
                             <label>
                                 title:
-                                <input type="text" name="title" th:value="${realEstate.title}">
+                                <input type="text" name="title" >
                             </label>
                         </div>
                         <div class="price-area">
                             <label>
-                                Block:
-                                <input  type="text" name="block" style="width: 100px;" th:value="${realEstate.block}">
-                            </label>
-                            <label>
-                                Lô
-                                <input  type="number" name="lo" style="width: 70px;" th:value="${realEstate.lo}">
-                            </label>
-                            <label>
                                 Diện tích:
-                                <input type="number" name="square" style="width: 70px;" th:value="${realEstate.square}">
+                                <input type="number" name="square" style="width: 70px;">
                                 m <sup>2</sup>
                             </label>
                             <label>
                                 Giá:
-                                <input  type="number" name="price" style="width: 70px;" th:value="${realEstate.price}">
+                                <input  type="number" name="price" style="width: 70px;">
                             </label>
                             <div>
                                 <label>
                                     Đường:
-                                    <input  type="text" name="street" style="width: 200px;" th:value="${realEstate.street}">
-                                </label>
-                            </div>
-                            <div class="">
-                                <label>
-                                    Pháp Lý:
-                                    <input  type="text" name="juridical" style="width: 200px;" th:value="${realEstate.juridical}">
+                                    <input  type="text" name="street" style="width: 200px;">
                                 </label>
                             </div>
                             <div>
                                 <label>
                                     Địa điểm:
                                     <select name="locationId" >
-                                        <option value="1" th:selected="${realEstate.location.id == 1}">Quận Hải Châu</option>
-                                        <option value="2" th:selected="${realEstate.location.id == 2}">Quận Cẩm Lệ</option>
-                                        <option value="3" th:selected="${realEstate.location.id == 3}">Quận Thanh Khê</option>
-                                        <option value="4" th:selected="${realEstate.location.id == 4}">Quận Liên Chiểu</option>
-                                        <option value="5" th:selected="${realEstate.location.id == 5}">Quận Ngũ Hành Sơn</option>
-                                        <option value="6" th:selected="${realEstate.location.id == 6}">Quận Sơn Trà</option>
-                                        <option value="7" th:selected="${realEstate.location.id == 7}">Huyện Hòa Vang</option>
+                                        <option value="1">Quận Hải Châu</option>
+                                        <option value="2" >Quận Cẩm Lệ</option>
+                                        <option value="3" >Quận Thanh Khê</option>
+                                        <option value="4" >Quận Liên Chiểu</option>
+                                        <option value="5" >Quận Ngũ Hành Sơn</option>
+                                        <option value="6" >Quận Sơn Trà</option>
+                                        <option value="7" >Huyện Hòa Vang</option>
                                     </select>
                                 </label>
                             </div>
@@ -89,15 +75,15 @@
                             <div class="realty-contact">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3>Đặc điểm bất động sản</h3>
+                                        <h3>Đặc điểm </h3>
                                         <ul>
                                             <li>
                                                 <span class="key">Hướng</span>
-                                                <input th:value="${tag.direction}" type="text" name="direction" style="width: 160px;">
+                                                <input type="text" name="direction" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Tình trạng</span>
-                                                <input th:value="${tag.status}" type="text" name="status" style="width: 160px;">
+                                                <input type="text" name="status" style="width: 160px;">
                                             </li>
                                         </ul>
                                     </div>
@@ -106,23 +92,23 @@
                                         <ul>
                                             <li>
                                                 <span class="key">Tên liên lạc</span>
-                                                <input th:value="${tag.name}" type="text" name="nameContact" style="width: 160px;">
+                                                <input type="text" name="nameContact" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Điện thoại</span>
-                                                <input th:value="${tag.phonenumber}" type="text" name="phonenumber" style="width: 160px;">
+                                                <input type="text" name="phonenumber" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Zalo</span>
-                                                <input th:value="${tag.zalo}" type="text" name="zalo" style="width: 160px;">
+                                                <input type="text" name="zalo" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Skype</span>
-                                                <input th:value="${tag.skype}" type="text" name="skype" style="width: 160px;">
+                                                <input type="text" name="skype" style="width: 160px;">
                                             </li>
                                             <li>
                                                 <span class="key">Email</span>
-                                                <input th:value="${tag.email}" type="email" name="email" style="width: 160px;">
+                                                <input type="email" name="email" style="width: 160px;">
                                             </li>
                                         </ul>
                                     </div>
@@ -130,10 +116,10 @@
                             </div>
                             <div class="realty-infor">
                                 <h3 class="info-des">Meta tags: </h3>
-                                <textarea th:text="${seo.metas}" name="metas" rows="8" style="width: 100%;"></textarea>
+                                <textarea name="metas" rows="8" style="width: 100%;"></textarea>
                             </div>
                         </div>
-                        <button id="realEstateUpdateButton" type="button" name="button">Update</button>
+                        <button id="rentHouseSubmitButton" type="button" name="button">Save</button>
                     </form>
                 </div>
             </div>
@@ -147,8 +133,5 @@
 </a>
 <div id="fb-root"></div>
 <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
-<script th:inline="javascript">
-    window.editor.setData([[${realEstate.description}]])
-</script>
 </body>
 </html>

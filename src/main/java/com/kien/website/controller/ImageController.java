@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @Controller
-@RequestMapping("/files")
-public class FileController {
+@RequestMapping("/images")
+public class ImageController {
 
-    Logger logger = LoggerFactory.getLogger(FileController.class);
+    Logger logger = LoggerFactory.getLogger(ImageController.class);
 
     @Autowired
     public HttpServletRequest request;
@@ -29,8 +29,8 @@ public class FileController {
     @PostMapping("/upload")
     @CrossOrigin
     public @ResponseBody
-    ResponseEntity<String> fileUpload(@RequestParam("file") MultipartFile file) {
-        logger.info("Upload a file");
+    ResponseEntity<String> imageUpload(@RequestParam("file") MultipartFile file) {
+        logger.info("Upload an image");
         try {
             if (!file.getOriginalFilename().isEmpty()) {
                 BufferedOutputStream outputStream =

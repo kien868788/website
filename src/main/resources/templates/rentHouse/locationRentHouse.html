@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thuê nhà Đà Nẵng, Cho thuê nhà nguyên căn tại Đà Nẵng chính chủ</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+            integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<nav th:insert="~{fragments/header :: nav}"></nav>
+<style>
+    .sticky {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        border-top: 0;
+    }
+</style>
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    var navbar = document.getElementById("menu");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+
+<section id="category">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-8">
+                <p class="title">
+                    Thuê nhà Đà Nẵng, Cho thuê nhà nguyên căn tại <span th:text="${location.name}">Đà Nẵng</span>
+                </p>
+                <div class="list-item" th:if="${rentHouses != null}" th:each="rentHouse : ${rentHouses}">
+                    <div class="row no-gutters">
+                        <div class="col-4 col-md-3">
+                            <a href="" title="">
+                                <img src="anh/default-post-home.png" alt="" title="" class="img-fluid center-block"
+                                     width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-md-9">
+                            <h3>
+                                <a th:href="@{${rentHouse.category} + ${rentHouse.seoObject.url}}"
+                                    th:text="${rentHouse.title}">
+                                </a>
+                            </h3>
+                            <p class="date">
+                                <i class="fa fa-clock-o"></i>
+                                <span th:text="${rentHouse.lastModified}"></span>
+                            </p>
+                            <p class="des">
+                            </p>
+                            <div class="detail">
+                                <div class="price">
+                                    <i class="fa fa-tags" aria-hidden="true"></i>
+                                    Giá: <span th:text="${rentHouse.price}"></span> triệu
+                                </div>
+                                <div class="area">
+                                    <i class="fa fa-map-o" aria-hidden="true"></i>
+                                    Diện tích : <span th:text="${rentHouse.square}"></span> m2
+                                </div>
+                                <div class="location">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    Vị trí : <span th:text="${rentHouse.location.name}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pagination list-inline">
+                </ul>
+                <p>
+                <p style="text-align:justify">Nhu cầu <a href="https://danangland.org/thue-nha-da-nang"><strong>thuê nhà
+                    Đà Nẵng</strong></a> hiện nay rất lớn với một thành phố đáng sống, đầy đủ tiện nghi, trật tự an ninh
+                    đảm bảo thu hút đông đảo người dân cả nước đến làm việc và học tập. Cũng chính bởi lẽ đó nhu cầu tìm
+                    trọ, tìm nhà riêng, nhà nguyên căn diễn ra hằng ngày tại thành phố này. Để phục vụ nhu cầu này của
+                    người dân, Danangland ;là trang thông tin uy tín để bạn rao vặt, tìm mua, bán, cho thuê nhà riêng,
+                    cho thuê nhà nguyên căn Đà Nẵng.<br/>
+                    <br/>
+                    Hình thức kinh doanh từ cho thuê nhà đã trở nên vô cùng phổ biến và đem lại những khoảng lợi nhuận
+                    vô cùng lớn. Tại các thành phố lớn như Đà Nẵng thì việc thuê nhà riêng, nhà nguyên căn ;là lựa chọn
+                    phổ biến của người trẻ mới đi làm hoặc nhóm sinh viên, người mới tới Đà Nẵng để lập nghiệp hay các
+                    gia đình trẻ có con nhỏ. Theo các số liệu mà Danangland có và tổng hợp được thì ;nhu cầu thuê nhà
+                    nguyên căn tăng lên chủ yếu là do tài chính của người thuê nhà đang dần được cải thiện, họ có nhu
+                    cầu thuê nhà ở có chất lượng cao hơn chẳng hạn như từ sinh viên chuyển sang đi làm. Những đối tượng
+                    này bắt đầu quan tâm nhiều hơn đến môi trường sống và những tiện ích quanh nơi ở của mình. Nơi mà
+                    rất khó được đáp ứng ở phân khúc phòng trọ cho thuê, những căn trọ chật chội và nhỏ hẹp. Việc thuê
+                    nhà Đà Nẵng, thuê nhà nguyên căn sẽ khiến cho bạn làm chủ được vấn đề an ninh, giờ giấc tự do cũng
+                    như tự chủ cùng với các loại chi phí dịch vụ như điện, nước rẻ hơn . Từ những lợi ích trên khiến cho
+                    phân khúc cho thuê nhà riêng, nhà nguyên căn giá rẻ ngày càng thu hút được đông đảo người dân.<br/>
+                    <br/>
+                    Khi thuê nhà nguyên căn tại Đà Nẵng không những phục vụ cho nhu cầu sinh sống mà nhiều người còn tận
+                    dụng để mở văn phòng khi mà chi phí thuê mặt bằng ở những tòa văn phòng tại Đà Nẵng hiện tại khá
+                    cao. Cùng với đó một cơ hội tạo lợi nhuận hơn nữa là nhiều người thuê nhà nguyên căn rồi sửa sang,
+                    tách phòng và cho thuê lại trở lại dường như đã trở thành một xu hướng hot trên thị trường.<br/>
+                    <br/>
+                    Có thể nói tiềm năng mà thị trường cho thuê nhà riêng Đà Nẵng giá rẻ là vô cùng lớn trong đó phân
+                    khúc giá được chia thành nhiều dạng phù hợp với từng loại đối tượng. Và được nhiều người quan tâm
+                    nhất là thuê nhà nguyên căn Đà Nẵng giá 6 triệu đến 10 triệu.<br/>
+                    <br/>
+                    Để tìm được nhà thuê nguyên căn Đà Nẵng giá rẻ và phù hợp nhất với mình hãy cùng đến với Danangland
+                    – một trang web giúp bạn giao dịch nhà đất, cho thuê nhà nguyên căn uy tín nhất hiện nay.</p>
+                </p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4">
+                <aside id="widget" class="d-none d-md-block d-lg-block">
+                </aside>
+                <aside id="widget-news">
+                    <h2 class="title">
+                        Tin Nổi Bật
+                    </h2>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/thong-tin-mua-ban-cho-thue-nha-dat-nguyen-sinh-sac-da-nang"
+                               title="Thông tin mua bán cho thuê nhà đất Nguyễn Sinh Sắc Đà Nẵng" class="title-image">
+                                <img src="/upload/tin-tuc-dat-da-nang/nha-dat-nguyen-sinh-sac-da-nang(1).jpg"
+                                     alt="Thông tin mua bán cho thuê nhà đất Nguyễn Sinh Sắc Đà Nẵng"
+                                     title="Thông tin mua bán cho thuê nhà đất Nguyễn Sinh Sắc Đà Nẵng"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/thong-tin-mua-ban-cho-thue-nha-dat-nguyen-sinh-sac-da-nang"
+                                   title="Thông tin mua bán cho thuê nhà đất Nguyễn Sinh Sắc Đà Nẵng">
+                                    Thông tin mua bán cho thuê nhà đất Nguyễn Sinh Sắc Đà Nẵng
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/cac-du-an-dat-nen-sun-group-tai-da-nang-thu-hut-nha-dau-tu-co-nao"
+                               title="Các dự án đất nền Sun Group tại Đà Nẵng thu hút nhà đầu tư cỡ nào"
+                               class="title-image">
+                                <img src="/upload/tin-tuc-dat-da-nang/cac-du-an-dat-nen-sun-group-tai-da-nang.jpg"
+                                     alt="Các dự án đất nền Sun Group tại Đà Nẵng thu hút nhà đầu tư cỡ nào"
+                                     title="Các dự án đất nền Sun Group tại Đà Nẵng thu hút nhà đầu tư cỡ nào"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/cac-du-an-dat-nen-sun-group-tai-da-nang-thu-hut-nha-dau-tu-co-nao"
+                                   title="Các dự án đất nền Sun Group tại Đà Nẵng thu hút nhà đầu tư cỡ nào">
+                                    Các dự án đất nền Sun Group tại Đà Nẵng thu hút nhà đầu tư cỡ nào
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/cac-condotel-dang-mo-ban-tai-hoi-an-voi-gia-uu-dai"
+                               title="Các condotel đang mở bán tại Hội An với giá ưu đãi" class="title-image">
+                                <img src="/upload/tin-tuc-dat-da-nang/cac-condotel-dang-mo-ban-tai-hoi-an-voi-gia-uu-dai.png"
+                                     alt="Các condotel đang mở bán tại Hội An với giá ưu đãi"
+                                     title="Các condotel đang mở bán tại Hội An với giá ưu đãi"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/cac-condotel-dang-mo-ban-tai-hoi-an-voi-gia-uu-dai"
+                                   title="Các condotel đang mở bán tại Hội An với giá ưu đãi">
+                                    Các condotel đang mở bán tại Hội An với giá ưu đãi
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/mua-ban-dat-du-an-lakeside-palace-da-nang-shophouse-lakeside"
+                               title="Đất dự án Lakeside Palace Đà Nẵng, thông tin mua bán dự án Lakeside"
+                               class="title-image">
+                                <img src="/upload/tin-tuc-dat-da-nang/dat-du-an-lakeside-palace-da-nang-thong-tin-mua-ban-du-an-lakeside(1).png"
+                                     alt="Đất dự án Lakeside Palace Đà Nẵng, thông tin mua bán dự án Lakeside"
+                                     title="Đất dự án Lakeside Palace Đà Nẵng, thông tin mua bán dự án Lakeside"
+                                     class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/mua-ban-dat-du-an-lakeside-palace-da-nang-shophouse-lakeside"
+                                   title="Đất dự án Lakeside Palace Đà Nẵng, thông tin mua bán dự án Lakeside">
+                                    Mua bán đất dự án Lakeside Palace Đà Nẵng, Shophouse Lakeside Palace Đà Nẵng
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="item row no-gutters">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <a href="https://danangland.org/tin-tuc/dat-nen-du-an-flc-eco-charm-da-nang-dang-thu-hut-gioi-dau-tu-ra-sao"
+                               title="" class="title-image">
+                                <img src="/upload/tin-tuc-dat-da-nang/du-an-flc-eco-charm-da-nang-dang-thu-hut-dau-tu.jpg"
+                                     alt="" title="" class="img-fluid center-block" width="auto" height="auto">
+                            </a>
+                        </div>
+                        <div class="col-8 col-sm-8 col-md-8">
+                            <h3>
+                                <a href="https://danangland.org/tin-tuc/dat-nen-du-an-flc-eco-charm-da-nang-dang-thu-hut-gioi-dau-tu-ra-sao"
+                                   title="">
+                                    Đất nền dự án FLC Eco Charm Đà Nẵng đang thu hút giới đầu tư ra sao?
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+
+                </aside>
+                <aside id="widget-news">
+                    <h2 class="title">
+                        Top tìm kiếm nhiều nhất
+                    </h2>
+                    <ul>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='bán nhà đất 2 mặt tiền Đà Nẵng'
+                                href='https://danangland.org/mua-ban-dat-mat-tien-mat-kiet-da-nang'>bán nhà đất 2 mặt
+                            tiền Đà Nẵng</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='căn hộ mini cho thuê Đà Nẵng' href='https://danangland.org/can-ho-da-nang'>căn hộ
+                            mini cho thuê Đà Nẵng</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='nhà đất Hoà Xuân Đà Nẵng' href='https://danangland.org/du-an-dat-hoa-xuan'>nhà
+                            đất Hoà Xuân Đà Nẵng</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='mua bán nhà đất Hải Châu'
+                                href='https://danangland.org/nha-dat-mat-tien-mat-kiet-quan-hai-chau-da-nang'>mua bán
+                            nhà đất Hải Châu</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title=' Bán đất Ngũ Hành Sơn  Đà Nẵng'
+                                href='https://danangland.org/mua-ban-nha-dat-ngu-hanh-son-da-nang'> Bán đất Ngũ Hành Sơn
+                            Đà Nẵng</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='bán đất Hòa Quý Đà Nẵng' href='https://danangland.org/dat-hoa-quy-da-nang'>bán
+                            đất Hòa Quý Đà Nẵng</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a title='Đất Hoà Châu Cẩm Lệ'
+                                                                                           href='https://danangland.org/mua-ban-dat-hoa-chau-da-nang'>Đất
+                            Hoà Châu Cẩm Lệ</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a title='Đất hòa khánh nam'
+                                                                                           href='https://danangland.org/khu-dan-cu-khu-cong-nghiep-hoa-khanh'>Đất
+                            hòa khánh nam</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='Nhà đất quận Liên Chiểu Đà Nẵng'
+                                href='https://danangland.org/mua-ban-nha-dat-quan-lien-chieu-da-nang'>Nhà đất quận Liên
+                            Chiểu Đà Nẵng</a>
+                        <li><i class='fa fa-angle-double-right' aria-hidden='true'></i> <a
+                                title='bán đất Phước Lý đà nẵng 2019'
+                                href='https://danangland.org/khu-do-thi-phuoc-ly-da-nang'>bán đất Phước Lý đà nẵng
+                            2019</a>
+                    </ul>
+                </aside>
+            </div>
+            <!-- <div class="col-12 col-sm-12 col-md-4">
+                <aside id="widget">
+                    <div class="group-tabs" id="widget-seach">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                                  Cần Bán
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                  Cho Thuê
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+                                  Sang Nhượng
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active show" id="home">
+                                <form action="">
+                                    <div class="form-row">
+                                      <div class="col">
+                                          <input type="text" class="form-control form-control-sm form-control-no-border" placeholder="Nhập từ khóa, vd: Căn hộ vinhomes">
+                                      </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                              <option>- Chọn kiểu cho thuê -</option>
+                                              <option>Cho thuê nhà mặt phố</option>
+                                              <option>Cho thuê văn phòng</option>
+                                              <option>Cho thuê chung cư</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                              <option>-Chọn Xã/Phường/Thị trấn-</option>
+                                              <option>Phường Hòa Phát</option>
+                                              <option>Phường Hòa An</option>
+                                              <option>Phường Hòa Thọ Đông</option>
+                                              <option>Phường Hòa Thọ Tây</option>
+                                              <option>Phường Hòa Xuân</option>
+                                              <option>Phường Khuê Trung</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                              <option>-Chọn Quận/Huyện-</option>
+                                              <option>Quận Hải Châu</option>
+                                              <option>Quận Thanh Khê</option>
+                                              <option>Quận Sơn Trà</option>
+                                              <option>Quận Ngũ Hành Sơn</option>
+                                              <option>Quận Liên Chiểu</option>
+                                              <option>Huyện Hòa Vang</option>
+                                              <option>Quận Cẩm Lệ</option>
+                                              <option>Huyện Hoàng Sa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="" selected="selected">- Diện tích -</option>
+                                                <option value="0">Tất cả</option>
+                                                <option value="10-30">10-30 m2</option>
+                                                <option value="30-50">30-50 m2</option>
+                                                <option value="51-80">50-80 m2</option>
+                                                <option value="81-100">80-100 m2</option>
+                                                <option value="100-150">100-150 m2</option>
+                                                <option value="150-200">150-200 m2</option>
+                                                <option value="201-250">200-250 m2</option>
+                                                <option value="251-300">250-300 m2</option>
+                                                <option value="301-500">300-500 m2</option>
+                                                <option value="501">Trên 500 m2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="" selected="selected">- Chọn mức giá -</option>
+                                                <option value="thoa-thuan">Thỏa thuận</option>
+                                                <option value="0-500">&lt; 500 triệu</option>
+                                                <option value="500-1000">500 Triệu -1 tỷ</option>
+                                                <option value="1000-3000">1 tỷ - 3 tỷ</option>
+                                                <option value="3000-5000">3 tỷ - 5 tỷ</option>
+                                                <option value=">5000">&gt; 5 tỷ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                               <option value="">- Hướng -</option>
+                                               <option value="dong-bac">Đông Bắc</option>
+                                               <option value="khong-xac-dinh">Không xác định</option>
+                                               <option value="dong">Đông</option>
+                                               <option value="tay">Tây</option>
+                                               <option value="nam">Nam</option>
+                                               <option value="bac">Bắc</option>
+                                               <option value="tay-bac">Tây Bắc</option>
+                                               <option value="tay-nam">Tây Nam</option>
+                                               <option value="dong-nam">Đông Nam</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="" selected="selected">- Số phòng ngủ -</option>
+                                                <option value="khong-xac-dinh">Không xác định</option>
+                                                <option value="1">1+</option>
+                                                <option value="2">2+</option>
+                                                <option value="3">3+</option>
+                                                <option value="4">4+</option>
+                                                <option value="5">5+</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="">- Dự án -</option>
+                                                <option value="khu-thuong-mai-dich-vu">Khu thương mại dịch vụ</option>
+                                                <option value="cao-oc-van-phong">Cao ốc văn phòng</option>
+                                                <option value="khu-can-ho-chung-cu">Khu căn hộ chung cư</option>
+                                                <option value="khu-dan-cu">Khu dân cư</option>
+                                                <option value="khu-phuc-hop">Khu phức hợp</option>
+                                                <option value="khu-cong-nghiep">Khu công nghiệp</option>
+                                                <option value="khu-du-lich-nghi-duong">Khu du lịch nghỉ dưỡng</option>
+                                                <option value="khu-do-thi-moi">Khu đô thị mới</option>
+                                                <option value="du-an-khac">Dự án khác</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-center">
+                                            <button type="submit" class="btn btn-danger btn-sm">Tìm kiếm</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="profile">
+                                <div class="alert alert-danger">
+                                    <strong>Xin lỗi!</strong>
+                                    Chưa có dữ liệu
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="messages">
+                                <div class="alert alert-danger">
+                                    <strong>Xin lỗi!</strong>
+                                    Chưa có dữ liệu
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </aside>
+                <aside id="widget">
+                    <div class="group-tabs" id="widget-news">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#canba" aria-controls="canba" role="tab" data-toggle="tab">
+                                  Cần Bán
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#chothue" aria-controls="chothue" role="tab" data-toggle="tab">
+                                  Cho Thuê
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#sangnhuong" aria-controls="sangnhuong" role="tab" data-toggle="tab">
+                                  Sang Nhượng
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active show" id="canba">
+                                <div class="alert alert-danger">
+                                    <strong>Xin lỗi!</strong>
+                                    Chưa có dữ liệu
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Bán biệt thự</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="chothue">
+                                <div class="alert alert-danger">
+                                    <strong>Xin lỗi!</strong>
+                                    Chưa có dữ liệu
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="sangnhuong">
+                                <div class="alert alert-danger">
+                                    <strong>Xin lỗi!</strong>
+                                    Chưa có dữ liệu
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </aside>
+              </div> -->         </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-8">
+                <div class="title">Info</div>
+                <p>
+                    Danangland chuyên hỗ trợ đất, nhà chính chủ với tiêu chí tìm hàng siêu rẻ, chất lượng cho người có
+                    nhu cầu. Tin rao sẽ được kiểm duyệt kỹ trước khi đăng. Cần nhu cầu mua bán nhà đất Đà Nẵng xin liên
+                    hệ 0917.365.882 hoặc đăng ký tại website.
+                </p>
+                <div class="share-social">
+                    <a rel='nofollow' href="https://www.facebook.com/DaNangLand.Org"><i class="fa fa-facebook"
+                                                                                        aria-hidden="true"></i></a>
+                    <a rel='nofollow' href="https://twitter.com/datDanangLand"><i class="fa fa-twitter"
+                                                                                  aria-hidden="true"></i></a>
+                    <!--  <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a> -->
+                    <!--  <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a> -->
+                    <a rel='nofollow' href="https://dananglandblog.tumblr.com"><i class="fa fa-tumblr"
+                                                                                  aria-hidden="true"></i></a>
+                    <a rel='nofollow' href="https://www.pinterest.com/datdanangland"><i class="fa fa-pinterest"
+                                                                                        aria-hidden="true"></i></a>
+                    <a rel='nofollow'
+                       href="https://www.linkedin.com/company/danangland-dat-nen-da-nang-gia-re-moi-nhat-hom-nay"><i
+                            class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a rel='nofollow' href="https://www.flickr.com/photos/muabandatdanangchinhchu"><i
+                            class="fa fa-flickr" aria-hidden="true"></i></a>
+                    <!-- <a rel='nofollow' href=""><i class="fa fa-myspace" aria-hidden="true"></i></a> -->
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4">
+                <div class="title">Contact</div>
+                <p><i class="fa fa-mobile" aria-hidden="true"></i> Hotline: 0917 365 882</p>
+                <p><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: danangland.org@gmail.com</p>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: 640 đường 2 tháng 9, Hoà Cường Nam, Hải
+                    Châu, Đà Nẵng, Vietnam</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<a href="#openModal" class="showFrmLand">Ký gửi đất</a>
+<div id="openModal" class="modalDialog">
+    <div id="register">
+        <a href="#close" title="Close" class="close">X</a>
+        <div class="box-login">
+            <div class="form">
+                <form>
+                    <input type="hidden" name="_token" value="tTw89cfrHKPdnWSK3Vcb0kAS409ScvDY3JOXVJyy"> <input
+                        type="hidden" name="full_url" value="https://danangland.org/thue-nha-da-nang" id="full_url">
+                    <div class="text-center">
+                        <b><strong>Ký Gửi Đất Nhanh</strong></b>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Số lô" id="model_so_lo">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Số block" id="model_so_block">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Dự án" id="model_du_an">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Giá bạn mong muốn" id="model_gia_ban">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Họ và tên" id="model_ho_ten">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Số điện thoại" id="model_sdt">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- <input type="text" class="form-control" placeholder="Email" id="email"> -->
+                            <textarea class="form-control" id="model_content"
+                                      placeholder="Nội dung cần gửi, thông tin bất động sản..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col text-center">
+                            <a href="#close" title="Close" class="btn bg-btn btn-sm">Đóng</a>
+                            <button type="button" class="btn bg-btn btn-sm" onclick="return Common.kyguidatOnline();">Ký
+                                gửi ngay
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!--box-login-->
+    </div>
+</div>
+<a href="#openModalMua" class="showFrmLandMua">Đăng Ký Tư Vấn</a>
+<div id="openModalMua" class="modalDialog">
+    <div id="register">
+        <a href="#close" title="Close" class="close">X</a>
+        <div class="box-login">
+            <div class="form">
+                <form>
+                    <input type="hidden" name="_token" value="tTw89cfrHKPdnWSK3Vcb0kAS409ScvDY3JOXVJyy">
+                    <div class="form-row">
+                        <div class="text-center">
+                            <b><strong>Bạn cần mua bất động sản theo nhu cầu, đăng ký ngay</strong></b>
+                        </div>
+                    </div>
+                    <!-- <div class="form-row">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Số block" id="so_block">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Dự án" id="du_an">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Giá bạn mong muốn" id="gia_ban">
+                      </div>
+                    </div> -->
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Họ và tên" id="online_ho_ten">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Số điện thoại" id="online_sdt">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- <input type="text" class="form-control" placeholder="Email" id="email"> -->
+                            <textarea class="form-control" id="online_content"
+                                      placeholder="Nội dung cần gửi..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col text-center">
+                            <a href="#close" title="Close" class="btn bg-btn btn-sm">Đóng</a>
+                            <button type="button" class="btn bg-btn btn-sm"
+                                    onclick="return Common.dangkytuvanOnline();">Đăng ký
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--box-login-->
+    </div>
+</div>
+<a class="back-to-top">
+    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+</a>
+<script src="/assets/frontend/js/app.js?id=99da30828f6f854ff272"></script>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    Common.init();
+</script>
+</body>
+</html>

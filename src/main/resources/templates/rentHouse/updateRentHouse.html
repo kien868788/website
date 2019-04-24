@@ -20,56 +20,42 @@
         <div class="row no-gutters">
             <div class="col-12 col-md-8">
                 <div class="item-project">
-                    <form id="realEstateForm">
-                        <input type="hidden" name="id" th:value="${realEstate.id}">
+                    <form id="rentHouseForm">
+                        <input type="hidden" name="id" th:value="${rentHouse.id}">
                         <input th:type="hidden" name="idSeoObject" th:value="${seo.id}">
                         <div class="title">
                             <label>
                                 title:
-                                <input type="text" name="title" th:value="${realEstate.title}">
+                                <input type="text" name="title" th:value="${rentHouse.title}">
                             </label>
                         </div>
                         <div class="price-area">
                             <label>
-                                Block:
-                                <input  type="text" name="block" style="width: 100px;" th:value="${realEstate.block}">
-                            </label>
-                            <label>
-                                Lô
-                                <input  type="number" name="lo" style="width: 70px;" th:value="${realEstate.lo}">
-                            </label>
-                            <label>
                                 Diện tích:
-                                <input type="number" name="square" style="width: 70px;" th:value="${realEstate.square}">
+                                <input type="number" name="square" style="width: 70px;" th:value="${rentHouse.square}">
                                 m <sup>2</sup>
                             </label>
                             <label>
                                 Giá:
-                                <input  type="number" name="price" style="width: 70px;" th:value="${realEstate.price}">
+                                <input  type="number" name="price" style="width: 70px;" th:value="${rentHouse.price}">
                             </label>
                             <div>
                                 <label>
                                     Đường:
-                                    <input  type="text" name="street" style="width: 200px;" th:value="${realEstate.street}">
-                                </label>
-                            </div>
-                            <div class="">
-                                <label>
-                                    Pháp Lý:
-                                    <input  type="text" name="juridical" style="width: 200px;" th:value="${realEstate.juridical}">
+                                    <input  type="text" name="street" style="width: 200px;" th:value="${rentHouse.street}">
                                 </label>
                             </div>
                             <div>
                                 <label>
                                     Địa điểm:
                                     <select name="locationId" >
-                                        <option value="1" th:selected="${realEstate.location.id == 1}">Quận Hải Châu</option>
-                                        <option value="2" th:selected="${realEstate.location.id == 2}">Quận Cẩm Lệ</option>
-                                        <option value="3" th:selected="${realEstate.location.id == 3}">Quận Thanh Khê</option>
-                                        <option value="4" th:selected="${realEstate.location.id == 4}">Quận Liên Chiểu</option>
-                                        <option value="5" th:selected="${realEstate.location.id == 5}">Quận Ngũ Hành Sơn</option>
-                                        <option value="6" th:selected="${realEstate.location.id == 6}">Quận Sơn Trà</option>
-                                        <option value="7" th:selected="${realEstate.location.id == 7}">Huyện Hòa Vang</option>
+                                        <option value="1" th:selected="${rentHouse.location.id == 1}">Quận Hải Châu</option>
+                                        <option value="2" th:selected="${rentHouse.location.id == 2}">Quận Cẩm Lệ</option>
+                                        <option value="3" th:selected="${rentHouse.location.id == 3}">Quận Thanh Khê</option>
+                                        <option value="4" th:selected="${rentHouse.location.id == 4}">Quận Liên Chiểu</option>
+                                        <option value="5" th:selected="${rentHouse.location.id == 5}">Quận Ngũ Hành Sơn</option>
+                                        <option value="6" th:selected="${rentHouse.location.id == 6}">Quận Sơn Trà</option>
+                                        <option value="7" th:selected="${rentHouse.location.id == 7}">Huyện Hòa Vang</option>
                                     </select>
                                 </label>
                             </div>
@@ -133,7 +119,7 @@
                                 <textarea th:text="${seo.metas}" name="metas" rows="8" style="width: 100%;"></textarea>
                             </div>
                         </div>
-                        <button id="realEstateUpdateButton" type="button" name="button">Update</button>
+                        <button id="rentHouseUpdateButton" type="button" name="button">Update</button>
                     </form>
                 </div>
             </div>
@@ -148,7 +134,7 @@
 <div id="fb-root"></div>
 <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
 <script th:inline="javascript">
-    window.editor.setData([[${realEstate.description}]])
+    window.editor.setData([[${rentHouse.description}]])
 </script>
 </body>
 </html>

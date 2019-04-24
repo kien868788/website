@@ -24,4 +24,13 @@ public class Tag {
 
     public Tag() {}
 
+    public Tag(String name, String phonenumber, String zalo, String skype, String email, String direction, String status) {
+        this.name = name;
+        this.phonenumber = phonenumber;
+        this.zalo = zalo;
+        this.skype = skype;
+        this.email = email;
+        this.direction = direction;
+        this.status = status;
+    }
 }

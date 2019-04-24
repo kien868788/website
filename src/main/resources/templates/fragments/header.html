@@ -15,7 +15,9 @@
         <div class="container">
             <div class="row">
                 <div class="top-phone col-12 col-md-8">
-                    <h1 th:text="${realEstate != null ? realEstate.title : 'Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ'}"></h1>
+                    <h1 th:text="${realEstate != null} ? ${realEstate.title} : _">Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</h1>
+                    <h1 th:text="${rentHouse != null} ? ${rentHouse.title} : _">Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</h1>
+                    <h1 th:text="${news != null} ? ${news.title} : _">Nhà đất Đà Nẵng, mua bán bất động sản nhà đất Đà Nẵng chính chủ</h1>
                 </div>
                 <div class="login-logout col-12 col-md-4" sec:authorize="isAuthenticated()">
                     <ul>
@@ -55,26 +57,26 @@
         <div class="container d-none d-md-block d-lg-block">
             <ul>
                 <li><a th:href='@{/}'>Trang Chủ</a></li>
-                <li><a href=''>Mua Bán Nhà Đất Đà Nẵng</a>
+                <li><a href="">Mua Bán Nhà Đất Đà Nẵng</a>
                     <ul class='sub-menu'>
-                        <li><a href=''>Quận Hải Châu</a></li>
-                        <li><a href=''>Quận Cẩm Lệ</a></li>
-                        <li><a href=''>Quận Thanh Khê</a></li>
-                        <li><a href=''>Quận Liên Chiểu</a></li>
-                        <li><a href=''>Quận Ngũ Hành Sơn</a></li>
-                        <li><a href=''>Quận Sơn Trà</a></li>
-                        <li><a href=''>Huyện Hòa Vang</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=quan-hai-chau-1}">Quận Hải Châu</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=quan-cam-le-2}">Quận Cẩm Lệ</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=quan-thanh-khe-3}">Quận Thanh Khê</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=quan-lien-chieu-4}">Quận Liên Chiểu</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=quan-ngu-hanh-son-5}">Quận Ngũ Hành Sơn</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=quan-son-tra-6}">Quận Sơn Trà</a></li>
+                        <li><a th:href="@{/bat-dong-san?lo=huyen-hoa-vang-7}">Huyện Hòa Vang</a></li>
                     </ul>
                 </li>
                 <li><a href=''>Cho Thuê Bán Nhà Đất Đà Nẵng</a>
                     <ul class='sub-menu'>
-                        <li><a href=''>Quận Hải Châu</a></li>
-                        <li><a href=''>Quận Cẩm Lệ</a></li>
-                        <li><a href=''>Quận Thanh Khê</a></li>
-                        <li><a href=''>Quận Liên Chiểu</a></li>
-                        <li><a href=''>Quận Ngũ Hành Sơn</a></li>
-                        <li><a href=''>Quận Sơn Trà</a></li>
-                        <li><a href=''>Huyện Hòa Vang</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=quan-hai-chau-1}">Quận Hải Châu</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=quan-cam-le-2}">Quận Cẩm Lệ</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=quan-thanh-khe-3}">Quận Thanh Khê</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=quan-lien-chieu-4}">Quận Liên Chiểu</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=quan-ngu-hanh-son-5}">Quận Ngũ Hành Sơn</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=quan-son-tra-6}">Quận Sơn Trà</a></li>
+                        <li><a th:href="@{/nha-cho-thue?lo=huyen-hoa-vang-7}">Huyện Hòa Vang</a></li>
                     </ul>
                 </li>
                 <li><a href=''>Tin Tức Nhà Đất Đà Nẵng</a>

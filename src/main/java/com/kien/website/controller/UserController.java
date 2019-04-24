@@ -1,7 +1,9 @@
 package com.kien.website.controller;
 
-import com.kien.website.model.post.RealEstate;
-import com.kien.website.repository.RealEstateRepository;
+import com.kien.website.model.post.News;
+import com.kien.website.model.post.SellPost;
+import com.kien.website.repository.NewsRepository;
+import com.kien.website.repository.SellPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,15 +21,24 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    RealEstateRepository realEstateRepository;
+    SellPostRepository sellPostRepository;
+
+
+    @Autowired
+    NewsRepository newsRepository;
 
     @GetMapping("/admin")
     public String adminLogin(Model model) {
         Pageable pageable = PageRequest.of(0,50,Sort.by("lastModified"));
-        Page<RealEstate> realEstatesPage = realEstateRepository.findAll(pageable);
-        if (realEstatesPage.hasContent()) {
-            List<RealEstate> realEstates = realEstatesPage.getContent();
-            model.addAttribute("realEstates", realEstates);
+        Page<SellPost> sellPostsPage = sellPostRepository.findAll(pageable);
+        Page<News> newsPage = newsRepository.findAll(pageable);
+        if (sellPostsPage.hasContent()) {
+            List<SellPost> sellPosts = sellPostsPage.getContent();
+            model.addAttribute("sellPosts", sellPosts);
+        }
+        if (newsPage.hasContent()) {
+           List<News> newses = newsPage.getContent();
+           model.addAttribute("newses",newses);
         }
         return "users/admin";
     }

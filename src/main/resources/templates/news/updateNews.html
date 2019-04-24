@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" content="30"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+            integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous">
+    </script>
+    <title>Chỉnh sửa tin tức</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}">
+    <style>
+        .sticky {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-top: 0;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<nav th:insert="~{fragments/header :: nav}"></nav>
+<section id="single-news">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-8">
+                <form id="newsForm">
+                    <input type="hidden" name="id" th:value="${news.id}">
+                    <input th:type="hidden" name="idSeoObject" th:value="${seo.id}">
+                    <p class="title">
+                        <label>
+                            Tiêu đề :
+                            <input type="text" name="title" th:value="${news.title}">
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            Thể loại:
+                        </label>
+                        <select  name="category">
+                            <option th:value="${news.category.id}" th:text="${news.category.name}"></option>
+                        </select>
+                    </p>
+                    <div class="content">
+                        <h3 class="info-des">Nội dung</h3>
+                        <div id="toolbar-container"></div>
+                        <div id="editor">
+                            <p>Nội dung bài viết</p>
+                        </div>
+                    </div>
+                    <div class="realty-infor">
+                        <h3 class="info-des">Meta tags: </h3>
+                        <textarea name="metas" rows="8" style="width: 100%;" th:text="${seo.metas}"></textarea>
+                    </div>
+                    <button id="newsUpdateButton" type="button" name="button">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<a class="back-to-top">
+    <i class="fas fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
+</a>
+<div id="fb-root"></div>
+<script type="text/javascript" th:src="@{/scripts/main.js}"></script>
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    var navbar = document.getElementById("menu");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+<script th:inline="javascript">
+    window.editor.setData([[${news.description}]])
+</script>
+</body>
+</html>
